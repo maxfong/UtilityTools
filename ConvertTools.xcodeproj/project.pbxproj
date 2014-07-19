@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9362B501976531100CE1D6C /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */; };
+		A9362B5A197659CE00CE1D6C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9362B59197659CE00CE1D6C /* XCTest.framework */; };
+		A9362B60197659CE00CE1D6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9362B5E197659CE00CE1D6C /* InfoPlist.strings */; };
+		A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */; };
+		A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */; };
+		A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
+		A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
+		A9362B6D1976629700CE1D6C /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */; };
+		A9947A0F1974FE0C0068BDE6 /* MAXConvertTools.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */; };
+		A99D65511974FBBD00DBBCC7 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65501974FBBD00DBBCC7 /* AppKit.framework */; };
+		A99D65531974FBBD00DBBCC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65521974FBBD00DBBCC7 /* Foundation.framework */; };
+		A99D65591974FBBD00DBBCC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A99D65571974FBBD00DBBCC7 /* InfoPlist.strings */; };
+		A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
+		A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A9362B64197659CE00CE1D6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A99D65451974FBBD00DBBCC7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A99D654C1974FBBD00DBBCC7;
+			remoteInfo = ConvertTools;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A9362B4E1976531100CE1D6C /* NSTextField+copypaste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+copypaste.h"; sourceTree = "<group>"; };
+		A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+copypaste.m"; sourceTree = "<group>"; };
+		A9362B58197659CE00CE1D6C /* ConvertTools Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConvertTools Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9362B59197659CE00CE1D6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A9362B5D197659CE00CE1D6C /* ConvertTools Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConvertTools Tests-Info.plist"; sourceTree = "<group>"; };
+		A9362B5F197659CE00CE1D6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvertTools_Tests.m; sourceTree = "<group>"; };
+		A9362B63197659CE00CE1D6C /* ConvertTools Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConvertTools Tests-Prefix.pch"; sourceTree = "<group>"; };
+		A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginController_Tests.m; sourceTree = "<group>"; };
+		A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAXConvertTools.xib; sourceTree = "<group>"; };
+		A99D654D1974FBBD00DBBCC7 /* ConvertTools.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvertTools.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99D65501974FBBD00DBBCC7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A99D65521974FBBD00DBBCC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A99D65561974FBBD00DBBCC7 /* ConvertTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConvertTools-Info.plist"; sourceTree = "<group>"; };
+		A99D65581974FBBD00DBBCC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A99D655A1974FBBD00DBBCC7 /* MAXConvertTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAXConvertTools.h; sourceTree = "<group>"; };
+		A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAXConvertTools.m; sourceTree = "<group>"; };
+		A99D655D1974FBBD00DBBCC7 /* ConvertTools-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConvertTools-Prefix.pch"; sourceTree = "<group>"; };
+		A99D65631974FBE400DBBCC7 /* MAXPluginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXPluginController.h; sourceTree = "<group>"; };
+		A99D65641974FBE400DBBCC7 /* MAXPluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXPluginController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9362B55197659CE00CE1D6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9362B5A197659CE00CE1D6C /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99D654A1974FBBD00DBBCC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A99D65511974FBBD00DBBCC7 /* AppKit.framework in Frameworks */,
+				A99D65531974FBBD00DBBCC7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A922EA5E1978AB9D000FC76A /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				A9362B4E1976531100CE1D6C /* NSTextField+copypaste.h */,
+				A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		A9362B5B197659CE00CE1D6C /* ConvertTools Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */,
+				A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */,
+				A9362B5C197659CE00CE1D6C /* Supporting Files */,
+			);
+			path = "ConvertTools Tests";
+			sourceTree = "<group>";
+		};
+		A9362B5C197659CE00CE1D6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A9362B5D197659CE00CE1D6C /* ConvertTools Tests-Info.plist */,
+				A9362B5E197659CE00CE1D6C /* InfoPlist.strings */,
+				A9362B63197659CE00CE1D6C /* ConvertTools Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A99D65441974FBBD00DBBCC7 = {
+			isa = PBXGroup;
+			children = (
+				A99D65541974FBBD00DBBCC7 /* ConvertTools */,
+				A9362B5B197659CE00CE1D6C /* ConvertTools Tests */,
+				A99D654F1974FBBD00DBBCC7 /* Frameworks */,
+				A99D654E1974FBBD00DBBCC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A99D654E1974FBBD00DBBCC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A99D654D1974FBBD00DBBCC7 /* ConvertTools.xcplugin */,
+				A9362B58197659CE00CE1D6C /* ConvertTools Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A99D654F1974FBBD00DBBCC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A99D65501974FBBD00DBBCC7 /* AppKit.framework */,
+				A99D65521974FBBD00DBBCC7 /* Foundation.framework */,
+				A9362B59197659CE00CE1D6C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A99D65541974FBBD00DBBCC7 /* ConvertTools */ = {
+			isa = PBXGroup;
+			children = (
+				A922EA5E1978AB9D000FC76A /* Additions */,
+				A99D655A1974FBBD00DBBCC7 /* MAXConvertTools.h */,
+				A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */,
+				A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */,
+				A99D65631974FBE400DBBCC7 /* MAXPluginController.h */,
+				A99D65641974FBE400DBBCC7 /* MAXPluginController.m */,
+				A99D65551974FBBD00DBBCC7 /* Supporting Files */,
+			);
+			path = ConvertTools;
+			sourceTree = "<group>";
+		};
+		A99D65551974FBBD00DBBCC7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A99D65561974FBBD00DBBCC7 /* ConvertTools-Info.plist */,
+				A99D65571974FBBD00DBBCC7 /* InfoPlist.strings */,
+				A99D655D1974FBBD00DBBCC7 /* ConvertTools-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9362B57197659CE00CE1D6C /* ConvertTools Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9362B66197659CE00CE1D6C /* Build configuration list for PBXNativeTarget "ConvertTools Tests" */;
+			buildPhases = (
+				A9362B54197659CE00CE1D6C /* Sources */,
+				A9362B55197659CE00CE1D6C /* Frameworks */,
+				A9362B56197659CE00CE1D6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9362B65197659CE00CE1D6C /* PBXTargetDependency */,
+			);
+			name = "ConvertTools Tests";
+			productName = "ConvertTools Tests";
+			productReference = A9362B58197659CE00CE1D6C /* ConvertTools Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A99D654C1974FBBD00DBBCC7 /* ConvertTools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A99D65601974FBBD00DBBCC7 /* Build configuration list for PBXNativeTarget "ConvertTools" */;
+			buildPhases = (
+				A99D65491974FBBD00DBBCC7 /* Sources */,
+				A99D654A1974FBBD00DBBCC7 /* Frameworks */,
+				A99D654B1974FBBD00DBBCC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConvertTools;
+			productName = ConvertTools;
+			productReference = A99D654D1974FBBD00DBBCC7 /* ConvertTools.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A99D65451974FBBD00DBBCC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MAX;
+				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					A9362B57197659CE00CE1D6C = {
+						TestTargetID = A99D654C1974FBBD00DBBCC7;
+					};
+				};
+			};
+			buildConfigurationList = A99D65481974FBBD00DBBCC7 /* Build configuration list for PBXProject "ConvertTools" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A99D65441974FBBD00DBBCC7;
+			productRefGroup = A99D654E1974FBBD00DBBCC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A99D654C1974FBBD00DBBCC7 /* ConvertTools */,
+				A9362B57197659CE00CE1D6C /* ConvertTools Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9362B56197659CE00CE1D6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9362B60197659CE00CE1D6C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99D654B1974FBBD00DBBCC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9947A0F1974FE0C0068BDE6 /* MAXConvertTools.xib in Resources */,
+				A99D65591974FBBD00DBBCC7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9362B54197659CE00CE1D6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */,
+				A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */,
+				A9362B6D1976629700CE1D6C /* NSTextField+copypaste.m in Sources */,
+				A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */,
+				A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99D65491974FBBD00DBBCC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9362B501976531100CE1D6C /* NSTextField+copypaste.m in Sources */,
+				A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */,
+				A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9362B65197659CE00CE1D6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A99D654C1974FBBD00DBBCC7 /* ConvertTools */;
+			targetProxy = A9362B64197659CE00CE1D6C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A9362B5E197659CE00CE1D6C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9362B5F197659CE00CE1D6C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A99D65571974FBBD00DBBCC7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A99D65581974FBBD00DBBCC7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A9362B67197659CE00CE1D6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConvertTools Tests/ConvertTools Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ConvertTools Tests/ConvertTools Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A9362B68197659CE00CE1D6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConvertTools Tests/ConvertTools Tests-Prefix.pch";
+				INFOPLIST_FILE = "ConvertTools Tests/ConvertTools Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		A99D655E1974FBBD00DBBCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.8;
+			};
+			name = Debug;
+		};
+		A99D655F1974FBBD00DBBCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx10.8;
+			};
+			name = Release;
+		};
+		A99D65611974FBBD00DBBCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = "$(HOME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConvertTools/ConvertTools-Prefix.pch";
+				INFOPLIST_FILE = "ConvertTools/ConvertTools-Info.plist";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		A99D65621974FBBD00DBBCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DSTROOT = "$(HOME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ConvertTools/ConvertTools-Prefix.pch";
+				INFOPLIST_FILE = "ConvertTools/ConvertTools-Info.plist";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.8;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9362B66197659CE00CE1D6C /* Build configuration list for PBXNativeTarget "ConvertTools Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9362B67197659CE00CE1D6C /* Debug */,
+				A9362B68197659CE00CE1D6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A99D65481974FBBD00DBBCC7 /* Build configuration list for PBXProject "ConvertTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A99D655E1974FBBD00DBBCC7 /* Debug */,
+				A99D655F1974FBBD00DBBCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A99D65601974FBBD00DBBCC7 /* Build configuration list for PBXNativeTarget "ConvertTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A99D65611974FBBD00DBBCC7 /* Debug */,
+				A99D65621974FBBD00DBBCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A99D65451974FBBD00DBBCC7 /* Project object */;
+}
