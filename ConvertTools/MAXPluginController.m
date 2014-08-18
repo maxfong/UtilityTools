@@ -18,7 +18,7 @@
 - (IBAction)didPressedConvertChinese:sender
 {
     NSString *input = txtInput.stringValue;
-    NSString *convertedString = [input mutableCopy];
+    NSString *convertedString = [[input mutableCopy] stringByReplacingOccurrencesOfString:@"\\U" withString:@"\\u"];
     
     CFStringRef transform = CFSTR("Any-Hex/Java");
     CFStringTransform((CFMutableStringRef)convertedString, NULL, transform, YES);
