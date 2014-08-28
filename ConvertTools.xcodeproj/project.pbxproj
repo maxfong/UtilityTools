@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A9362B501976531100CE1D6C /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */; };
 		A9362B5A197659CE00CE1D6C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9362B59197659CE00CE1D6C /* XCTest.framework */; };
 		A9362B60197659CE00CE1D6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9362B5E197659CE00CE1D6C /* InfoPlist.strings */; };
 		A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */; };
 		A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */; };
 		A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
 		A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
-		A9362B6D1976629700CE1D6C /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */; };
 		A9947A0F1974FE0C0068BDE6 /* MAXConvertTools.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */; };
 		A99D65511974FBBD00DBBCC7 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65501974FBBD00DBBCC7 /* AppKit.framework */; };
 		A99D65531974FBBD00DBBCC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65521974FBBD00DBBCC7 /* Foundation.framework */; };
 		A99D65591974FBBD00DBBCC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A99D65571974FBBD00DBBCC7 /* InfoPlist.strings */; };
 		A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
 		A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
+		A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */; };
+		A9A7104719AF26060096D546 /* MAXJSONDictionaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */; };
+		A9E4C41C19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */; };
+		A9E4C41D19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */; };
+		A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */; };
+		A9E4C42119AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A9362B4E1976531100CE1D6C /* NSTextField+copypaste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+copypaste.h"; sourceTree = "<group>"; };
-		A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+copypaste.m"; sourceTree = "<group>"; };
 		A9362B58197659CE00CE1D6C /* ConvertTools Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConvertTools Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9362B59197659CE00CE1D6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A9362B5D197659CE00CE1D6C /* ConvertTools Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConvertTools Tests-Info.plist"; sourceTree = "<group>"; };
@@ -54,6 +56,12 @@
 		A99D655D1974FBBD00DBBCC7 /* ConvertTools-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConvertTools-Prefix.pch"; sourceTree = "<group>"; };
 		A99D65631974FBE400DBBCC7 /* MAXPluginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXPluginController.h; sourceTree = "<group>"; };
 		A99D65641974FBE400DBBCC7 /* MAXPluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXPluginController.m; sourceTree = "<group>"; };
+		A9A7104419AF26060096D546 /* MAXJSONDictionaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXJSONDictionaryController.h; sourceTree = "<group>"; };
+		A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXJSONDictionaryController.m; sourceTree = "<group>"; };
+		A9E4C41819AF084F00E3E181 /* NSTextField+copypaste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+copypaste.h"; sourceTree = "<group>"; };
+		A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+copypaste.m"; sourceTree = "<group>"; };
+		A9E4C41E19AF086600E3E181 /* NSString+UnicodeConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeConvert.h"; sourceTree = "<group>"; };
+		A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeConvert.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,15 +85,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A922EA5E1978AB9D000FC76A /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-				A9362B4E1976531100CE1D6C /* NSTextField+copypaste.h */,
-				A9362B4F1976531100CE1D6C /* NSTextField+copypaste.m */,
-			);
-			name = Additions;
-			sourceTree = "<group>";
-		};
 		A9362B5B197659CE00CE1D6C /* ConvertTools Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +137,8 @@
 		A99D65541974FBBD00DBBCC7 /* ConvertTools */ = {
 			isa = PBXGroup;
 			children = (
-				A922EA5E1978AB9D000FC76A /* Additions */,
+				A9E4C41519AF084F00E3E181 /* Additions */,
+				A9A7103F19AF23E20096D546 /* PartController */,
 				A99D655A1974FBBD00DBBCC7 /* MAXConvertTools.h */,
 				A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */,
 				A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */,
@@ -157,6 +157,26 @@
 				A99D655D1974FBBD00DBBCC7 /* ConvertTools-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A9A7103F19AF23E20096D546 /* PartController */ = {
+			isa = PBXGroup;
+			children = (
+				A9A7104419AF26060096D546 /* MAXJSONDictionaryController.h */,
+				A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */,
+			);
+			path = PartController;
+			sourceTree = "<group>";
+		};
+		A9E4C41519AF084F00E3E181 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				A9E4C41819AF084F00E3E181 /* NSTextField+copypaste.h */,
+				A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */,
+				A9E4C41E19AF086600E3E181 /* NSString+UnicodeConvert.h */,
+				A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */,
+			);
+			path = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +275,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */,
+				A9A7104719AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
+				A9E4C42119AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
 				A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */,
-				A9362B6D1976629700CE1D6C /* NSTextField+copypaste.m in Sources */,
 				A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */,
+				A9E4C41D19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */,
 				A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,9 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9362B501976531100CE1D6C /* NSTextField+copypaste.m in Sources */,
 				A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */,
 				A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */,
+				A9E4C41C19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */,
+				A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
+				A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

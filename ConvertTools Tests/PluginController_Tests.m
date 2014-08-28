@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MAXPluginController.h"
+#import "MAXJSONDictionaryController.h"
 
 @interface PluginController_Tests : XCTestCase
 
@@ -38,9 +39,9 @@
 - (void)testCheckJSON
 {
     NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\"),\"b\":\"b\",\"c\":\"c\"}}";
-    NSError *error = [self.controller checkJSON:json];
+    NSError *error = [MAXJSONDictionaryController checkJSON:json];
     
-    NSString * errMsg = [self.controller jsonError:error originString:json];
+    NSString * errMsg = [MAXJSONDictionaryController jsonError:error originString:json];
     NSLog(@"%@", errMsg);
     
     NSAssert(!error, error.description);
@@ -48,16 +49,18 @@
 
 - (void)testFormatterPrint
 {
-    //
     NSString *json = @"{\"d\":[{\"q\":\"d\",\"b\":\"d\"},{\"q\":\"d\",\"b\":\"d\"},{\"q\":\"d\",\"b\":\"d\"}]}";
     
-    NSDictionary *dic = [self.controller json2Dictionary:json error:nil];
+    NSDictionary *dic = [MAXJSONDictionaryController json2Dictionary:json error:nil];
     
-    NSString *string = [self.controller composeDictionary:dic composeSpace:nil];
-    
-    
+    NSString *string = [MAXJSONDictionaryController composeDictionary:dic composeSpace:nil];
     
     NSLog(@"%@", string);
+}
+
+- (void)testpressedCheckJSON
+{
+    [self.controller didPressedCheckJSON:nil];
 }
 
 @end

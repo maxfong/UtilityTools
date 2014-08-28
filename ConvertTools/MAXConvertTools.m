@@ -70,8 +70,6 @@ static MAXConvertTools *sharedPlugin;
         }
         [self.windowController.window makeKeyAndOrderFront:nil];
     }
-//    NSAlert *alert = [NSAlert alertWithMessageText:@"Hello, World" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
-//    [alert runModal];
 }
 
 - (void)dealloc
