@@ -44,7 +44,7 @@ static MAXConvertTools *sharedPlugin;
         if (productMenu)
         {
             [[productMenu submenu] addItem:[NSMenuItem separatorItem]];
-            NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"ConvertTools" action:NULL keyEquivalent:@""];
+            NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"UtilityTools" action:NULL keyEquivalent:@""];
             [menuItem setKeyEquivalentModifierMask:NSControlKeyMask];
             [menuItem setSubmenu:self.subMenu];
             

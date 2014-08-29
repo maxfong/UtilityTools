@@ -41,7 +41,7 @@
     NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\"),\"b\":\"b\",\"c\":\"c\"}}";
     NSError *error = [MAXJSONDictionaryController checkJSON:json];
     
-    NSString * errMsg = [MAXJSONDictionaryController jsonError:error originString:json];
+    NSString * errMsg = [MAXJSONDictionaryController jsonSpecificError:error originString:json];
     NSLog(@"%@", errMsg);
     
     NSAssert(!error, error.description);
@@ -53,7 +53,7 @@
     
     NSDictionary *dic = [MAXJSONDictionaryController json2Dictionary:json error:nil];
     
-    NSString *string = [MAXJSONDictionaryController composeDictionary:dic composeSpace:nil];
+    NSString *string = [MAXJSONDictionaryController formatDictionary:dic composeSpace:nil];
     
     NSLog(@"%@", string);
 }

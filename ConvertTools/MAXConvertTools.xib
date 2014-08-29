@@ -19,6 +19,13 @@
                 <outlet property="txtvJSONOutput" destination="ZHu-Rp-UHQ" id="fky-rp-2HM"/>
             </connections>
         </customObject>
+        <customObject id="BoG-sn-DOQ" customClass="MAXRequestController">
+            <connections>
+                <outlet property="txtfInterfaceURL" destination="D7O-vQ-Vd0" id="UeY-9T-08l"/>
+                <outlet property="txtvRequestInput" destination="RdI-Gd-MQB" id="hXD-Yb-bAd"/>
+                <outlet property="txtvResponseOutput" destination="JxT-mv-IMS" id="JXH-Cb-RcY"/>
+            </connections>
+        </customObject>
         <menu id="RoE-2T-CCh">
             <items>
                 <menuItem title="Unicode转码" id="RSX-WM-HrY">
@@ -249,14 +256,6 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="C74-xF-gZh">
-                        <rect key="frame" x="10" y="168" width="100" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="请求" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZS3-86-LZy">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="9QP-ht-LvW">
                         <rect key="frame" x="10" y="201" width="430" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -315,21 +314,16 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button id="U5h-kB-bWs">
-                        <rect key="frame" x="120" y="168" width="100" height="25"/>
+                    <button verticalHuggingPriority="750" id="C74-xF-gZh">
+                        <rect key="frame" x="10" y="168" width="100" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="清空所有" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AB5-WF-V5z">
+                        <buttonCell key="cell" type="square" title="请求" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZS3-86-LZy">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
-                    </button>
-                    <button id="dI9-cP-A0G">
-                        <rect key="frame" x="230" y="168" width="100" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" title="清空响应" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wes-xZ-wg1">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
+                        <connections>
+                            <action selector="didPressedSubmitRequest:" target="BoG-sn-DOQ" id="ieQ-jb-qgA"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

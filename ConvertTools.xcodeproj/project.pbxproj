@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9011C0019B01D630054BD2F /* MAXRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9011BFF19B01D630054BD2F /* MAXRequestController.m */; };
+		A9011C0119B01D630054BD2F /* MAXRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9011BFF19B01D630054BD2F /* MAXRequestController.m */; };
 		A9362B5A197659CE00CE1D6C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9362B59197659CE00CE1D6C /* XCTest.framework */; };
 		A9362B60197659CE00CE1D6C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9362B5E197659CE00CE1D6C /* InfoPlist.strings */; };
 		A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */; };
 		A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */; };
 		A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
 		A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
+		A970633B19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */; };
+		A970633C19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */; };
+		A98D327819B078A700183824 /* RequestController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98D327719B078A700183824 /* RequestController_Tests.m */; };
 		A9947A0F1974FE0C0068BDE6 /* MAXConvertTools.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */; };
 		A99D65511974FBBD00DBBCC7 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65501974FBBD00DBBCC7 /* AppKit.framework */; };
 		A99D65531974FBBD00DBBCC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65521974FBBD00DBBCC7 /* Foundation.framework */; };
@@ -38,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A9011BFE19B01D630054BD2F /* MAXRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXRequestController.h; sourceTree = "<group>"; };
+		A9011BFF19B01D630054BD2F /* MAXRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXRequestController.m; sourceTree = "<group>"; };
 		A9362B58197659CE00CE1D6C /* ConvertTools Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConvertTools Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9362B59197659CE00CE1D6C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A9362B5D197659CE00CE1D6C /* ConvertTools Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConvertTools Tests-Info.plist"; sourceTree = "<group>"; };
@@ -45,8 +52,11 @@
 		A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvertTools_Tests.m; sourceTree = "<group>"; };
 		A9362B63197659CE00CE1D6C /* ConvertTools Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConvertTools Tests-Prefix.pch"; sourceTree = "<group>"; };
 		A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginController_Tests.m; sourceTree = "<group>"; };
+		A970633919B028A500FBF4AB /* MAXProtocolEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXProtocolEngine.h; sourceTree = "<group>"; };
+		A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXProtocolEngine.m; sourceTree = "<group>"; };
+		A98D327719B078A700183824 /* RequestController_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController_Tests.m; sourceTree = "<group>"; };
 		A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAXConvertTools.xib; sourceTree = "<group>"; };
-		A99D654D1974FBBD00DBBCC7 /* ConvertTools.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConvertTools.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99D654D1974FBBD00DBBCC7 /* UtilityTools.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilityTools.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99D65501974FBBD00DBBCC7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A99D65521974FBBD00DBBCC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A99D65561974FBBD00DBBCC7 /* ConvertTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConvertTools-Info.plist"; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 			children = (
 				A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */,
 				A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */,
+				A98D327719B078A700183824 /* RequestController_Tests.m */,
 				A9362B5C197659CE00CE1D6C /* Supporting Files */,
 			);
 			path = "ConvertTools Tests";
@@ -105,6 +116,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A970633819B0281C00FBF4AB /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				A970633919B028A500FBF4AB /* MAXProtocolEngine.h */,
+				A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		A99D65441974FBBD00DBBCC7 = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +138,7 @@
 		A99D654E1974FBBD00DBBCC7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A99D654D1974FBBD00DBBCC7 /* ConvertTools.xcplugin */,
+				A99D654D1974FBBD00DBBCC7 /* UtilityTools.xcplugin */,
 				A9362B58197659CE00CE1D6C /* ConvertTools Tests.xctest */,
 			);
 			name = Products;
@@ -139,11 +159,14 @@
 			children = (
 				A9E4C41519AF084F00E3E181 /* Additions */,
 				A9A7103F19AF23E20096D546 /* PartController */,
+				A970633819B0281C00FBF4AB /* Tools */,
 				A99D655A1974FBBD00DBBCC7 /* MAXConvertTools.h */,
 				A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */,
 				A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */,
 				A99D65631974FBE400DBBCC7 /* MAXPluginController.h */,
 				A99D65641974FBE400DBBCC7 /* MAXPluginController.m */,
+				A9011BFE19B01D630054BD2F /* MAXRequestController.h */,
+				A9011BFF19B01D630054BD2F /* MAXRequestController.m */,
 				A99D65551974FBBD00DBBCC7 /* Supporting Files */,
 			);
 			path = ConvertTools;
@@ -214,7 +237,7 @@
 			);
 			name = ConvertTools;
 			productName = ConvertTools;
-			productReference = A99D654D1974FBBD00DBBCC7 /* ConvertTools.xcplugin */;
+			productReference = A99D654D1974FBBD00DBBCC7 /* UtilityTools.xcplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -275,10 +298,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */,
+				A98D327819B078A700183824 /* RequestController_Tests.m in Sources */,
 				A9A7104719AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
 				A9E4C42119AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
 				A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */,
+				A9011C0119B01D630054BD2F /* MAXRequestController.m in Sources */,
 				A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */,
+				A970633C19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */,
 				A9E4C41D19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */,
 				A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */,
 			);
@@ -289,9 +315,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */,
+				A970633B19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */,
 				A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */,
 				A9E4C41C19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */,
 				A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
+				A9011C0019B01D630054BD2F /* MAXRequestController.m in Sources */,
 				A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +472,7 @@
 				INFOPLIST_FILE = "ConvertTools/ConvertTools-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = UtilityTools;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = xcplugin;
 			};
@@ -462,7 +490,7 @@
 				INFOPLIST_FILE = "ConvertTools/ConvertTools-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = UtilityTools;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = xcplugin;
 			};
