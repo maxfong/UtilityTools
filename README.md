@@ -1,6 +1,6 @@
-ConvertTools
+UtilityTools
 ============
 
-XCode JSON解析插件
+XCode 实用工具，供自己开发提高效率！
 
 功能编写中...
