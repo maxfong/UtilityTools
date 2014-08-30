@@ -4,19 +4,13 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConvertTools/MAXPluginController.m"
-            timestampString = "427345406.506285"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-checkJSON:"
-            landmarkType = "5">
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConvertTools Tests/PluginController_Tests.m"
-            timestampString = "427345403.920329"
+            filePath = "ConvertTools/Tools/MAXProtocolEngine.m"
+            timestampString = "431070190.638462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-testCheckJSON"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "+postRequestWithURL:JSONString:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,61 +35,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConvertTools Tests/PluginController_Tests.m"
-            timestampString = "427359051.780386"
+            filePath = "ConvertTools/Tools/MAXProtocolEngine.m"
+            timestampString = "431070192.13504"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-testFormatterPrint"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "+validityJSONString:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConvertTools/MAXPluginController.m"
-            timestampString = "427372123.697656"
+            filePath = "ConvertTools Tests/RequestController_Tests.m"
+            timestampString = "431070282.46507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-composeDictionary:composeSpace:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ConvertTools/MAXPluginController.m"
-            timestampString = "427372123.697656"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-composeDictionary:composeSpace:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ConvertTools/MAXPluginController.m"
-            timestampString = "427367293.707659"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-composeDictionary:composeSpace:"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-testPostRequestWithURL"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

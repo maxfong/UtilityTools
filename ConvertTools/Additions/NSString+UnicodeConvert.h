@@ -11,6 +11,7 @@
 @interface NSString (UnicodeConvert)
 
 - (NSString *)chineseFromUnicode;
-- (NSUInteger)repeatCountWithString:(NSString *)repeatString;
+- (NSUInteger)repeatCountWithRepeatString:(NSString *)repeatString;
+- (NSString*)md5;
 
 @end

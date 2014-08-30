@@ -7,20 +7,18 @@
 //
 
 #import "MAXProtocolEngine.h"
+#import "NSString+UnicodeConvert.h"
 
 @implementation MAXProtocolEngine
 
-+ (NSString *)postRequestWithURL:(NSURL *)url parameters:(NSDictionary *)parameters error:(NSError **)error
++ (NSString *)postRequestWithURL:(NSURL *)url JSONString:(NSString *)JSONString error:(NSError **)error
 {
-    NSData *bodyData = [NSJSONSerialization dataWithJSONObject:parameters
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:nil];
+    BOOL validity = [self validityJSONString:JSONString error:error];
+    if (!validity) {
+        return nil;
+    }
     
-    return [self postRequestWithURL:url HTTPBody:bodyData error:error];
-}
-
-+ (NSString *)postRequestWithURL:(NSURL *)url HTTPBody:(NSData *)HTTPBody error:(NSError **)error
-{
+    NSData *HTTPBody = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:40.0];
@@ -29,11 +27,18 @@
     
     NSURLResponse *response;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:error];
-    if (responseData)
-    {
-        return [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    }
-    return nil;
+    
+    return (responseData ? [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] : nil);
+}
+
++ (BOOL)validityJSONString:(NSString *)JSONString error:(NSError **)error
+{
+    NSString *string = JSONString ?: @"";
+    NSDictionary *JSONDictionary = [NSJSONSerialization JSONObjectWithData:[string dataUsingEncoding:NSUTF8StringEncoding]
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:error];
+    
+    return (JSONDictionary ? YES : NO);
 }
 
 @end

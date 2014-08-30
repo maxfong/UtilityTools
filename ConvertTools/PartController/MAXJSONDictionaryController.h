@@ -18,7 +18,17 @@
  *
  *  @return Dictionary
  */
-+ (NSDictionary *)json2Dictionary:(NSString *)jsonString error:(NSError **)error;
++ (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error;
+
+/**
+ *  Dictionary转换为JSON
+ *
+ *  @param dictionary dictionary
+ *  @param error      error
+ *
+ *  @return JSONString
+ */
++ (NSString *)JSONStringWithDictionary:(NSDictionary *)dictionary error:(NSError **)error;
 
 /**
  *  检查JSON是否正确
@@ -27,7 +37,7 @@
  *
  *  @return true is nil
  */
-+ (NSError *)checkJSON:(NSString *)jsonString;
++ (BOOL)validityJSONString:(NSString *)jsonString error:(NSError **)error;
 
 /**
  *  返回错误描述
@@ -36,7 +46,7 @@
  *
  *  @return 文案
  */
-+ (NSString *)jsonErrorDescription:(NSError *)error;
++ (NSString *)JSONDescriptionWithError:(NSError *)error;
 
 /**
  *  JSON具体的错误点
@@ -46,7 +56,7 @@
  *
  *  @return
  */
-+ (NSString *)jsonSpecificError:(NSError *)error originString:(NSString *)originString;
++ (NSString *)JSONSpecificFromError:(NSError *)error originString:(NSString *)originString;
 
 /**
  *   格式化Dictionary展示
@@ -56,6 +66,6 @@
  *
  *  @return 展示文案
  */
-+ (NSString *)formatDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space;
++ (NSString *)stringFromDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space;
 
 @end

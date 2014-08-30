@@ -10,35 +10,41 @@
 
 @implementation MAXJSONDictionaryController
 
-+ (NSDictionary *)json2Dictionary:(NSString *)jsonString error:(NSError **)error
++ (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error
 {
-    if ([jsonString length] > 0)
-    {
-        NSData *data = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:error];
-        return dic;
-    }
-    *error = [NSError errorWithDomain:NSStringFromClass([self class]) code:0 userInfo:nil];
-    return nil;
+    NSData *JSONData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:JSONData
+                                                               options:NSJSONReadingMutableLeaves
+                                                                 error:error];
+    return dictionary;
 }
 
-+ (NSError *)checkJSON:(NSString *)jsonString
++ (NSString *)JSONStringWithDictionary:(NSDictionary *)dictionary error:(NSError **)error
 {
-    NSError *error = nil;
-    [self json2Dictionary:jsonString error:&error];
-    return error;
+    id JSONObject = dictionary ?: @"";
+    NSData *data = [NSJSONSerialization dataWithJSONObject:JSONObject
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:nil];
+    
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] ?: nil;
 }
 
-+ (NSString *)jsonErrorDescription:(NSError *)error
++ (BOOL)validityJSONString:(NSString *)jsonString error:(NSError **)error
+{
+    NSDictionary *dictionary = [self dictionaryWithJSONString:jsonString error:error];
+    return (dictionary ? YES : NO);
+}
+
++ (NSString *)JSONDescriptionWithError:(NSError *)error
 {
     return [error.userInfo valueForKey:@"NSDebugDescription"];
 }
 
-+ (NSString *)jsonSpecificError:(NSError *)error originString:(NSString *)originString
++ (NSString *)JSONSpecificFromError:(NSError *)error originString:(NSString *)originString
 {
     if (error)
     {
-        NSString *string = [self jsonErrorDescription:error];
+        NSString *string = [self JSONDescriptionWithError:error];
         NSArray *array = [string componentsSeparatedByString:@" "];
         if ([array count] > 0)
         {
@@ -64,7 +70,7 @@
     return nil;
 }
 
-+ (NSString *)formatDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space
++ (NSString *)stringFromDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space
 {
     NSMutableString *string = [NSMutableString string];
     
@@ -82,7 +88,7 @@
      {
          if ([obj isKindOfClass:[NSDictionary class]])
          {
-             NSString *objString = [self formatDictionary:obj composeSpace:spaceString];
+             NSString *objString = [self stringFromDictionary:obj composeSpace:spaceString];
              [string appendString:[NSString stringWithFormat:@"%@\"%@\" : %@", spaceString, key, objString]];
          }
          else if ([obj isKindOfClass:[NSArray class]])
@@ -93,7 +99,7 @@
               {
                   if ([objt isKindOfClass:[NSDictionary class]])
                   {
-                      NSString *objString = [self formatDictionary:objt composeSpace:spaceString];
+                      NSString *objString = [self stringFromDictionary:objt composeSpace:spaceString];
                       [string appendString:[NSString stringWithFormat:@"%@", objString]];
                   }
               }];

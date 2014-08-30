@@ -34,20 +34,21 @@
 {
     NSString *outputString = txtvConsole.string ?: @"";
     
-    NSError *error = [MAXJSONDictionaryController checkJSON:outputString];
-    if (error)
+    NSError *error = nil;
+    BOOL validity = [MAXJSONDictionaryController validityJSONString:outputString error:&error];
+    if (validity)
     {
-        NSString *errorMsg = [MAXJSONDictionaryController jsonSpecificError:error originString:outputString];
-        NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionaryController jsonErrorDescription:error], errorMsg];
+        NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:outputString error:nil];
+        [txtvConsole setString:[[dic description] chineseFromUnicode]];
+    }
+    else
+    {
+        NSString *errorMsg = [MAXJSONDictionaryController JSONSpecificFromError:error originString:outputString];
+        NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionaryController JSONDescriptionWithError:error], errorMsg];
         NSString *messageText = @"验证 JSON 时出现错误";
         
         NSAlert *alert = [NSAlert alertWithMessageText:messageText defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:message, nil];
         [alert runModal];
-    }
-    else
-    {
-        NSDictionary *dic = [MAXJSONDictionaryController json2Dictionary:outputString error:nil];
-        [txtvConsole setString:[[dic description] chineseFromUnicode]];
     }
 }
 

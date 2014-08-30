@@ -13,6 +13,9 @@
 
 @interface MAXRequestController ()
 
+@property (nonatomic, retain) NSString *requestString;
+@property (nonatomic, retain) NSString *responseString;
+
 @end
 
 @implementation MAXRequestController
@@ -22,12 +25,13 @@
 - (IBAction)didPressedSubmitRequest:sender
 {
     NSError *error;
-    NSString *responseString = [MAXProtocolEngine postRequestWithURL:[self url] parameters:[self parameters] error:&error];
+    NSString *responseString = [MAXProtocolEngine postRequestWithURL:[self url]
+                                                          JSONString:self.requestString
+                                                               error:&error];
     
-    if ([responseString length] > 0)
+    if (responseString)
     {
-        NSDictionary *dictionary = [MAXJSONDictionaryController json2Dictionary:responseString error:nil];
-        [txtvResponseOutput setString:[[dictionary description] chineseFromUnicode]];
+        [self formatterWithTextbox:txtvResponseOutput content:responseString];
     }
     else
     {
@@ -35,16 +39,29 @@
     }
 }
 
-#pragma mark - Privint
+- (IBAction)didPressedFormatterRequest:sender
+{
+    NSString *string = txtvRequestInput.string ?: @"";
+    [self formatterWithTextbox:txtvRequestInput content:string];
+}
+
+#pragma mark - Private
 - (NSURL *)url
 {
-    NSString *urlString = txtfInterfaceURL.stringValue ?: @"";
+    NSString *urlString = txtfInterfaceURL.stringValue ?: nil;
     return [NSURL URLWithString:urlString];
 }
 
-- (NSDictionary *)parameters
+- (BOOL)formatterWithTextbox:(id)textBox content:(NSString *)content
 {
-    return nil;
+    if ([textBox isKindOfClass:[NSTextView class]])
+    {
+        NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:content error:nil];
+        [textBox setString:[[dictionary description] chineseFromUnicode]];
+        
+        return YES;
+    }
+    return NO;
 }
 
 @end

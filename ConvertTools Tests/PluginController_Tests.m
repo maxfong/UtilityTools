@@ -38,10 +38,11 @@
 
 - (void)testCheckJSON
 {
-    NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\"),\"b\":\"b\",\"c\":\"c\"}}";
-    NSError *error = [MAXJSONDictionaryController checkJSON:json];
+    NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\",\"b\":\"b\",\"c\":\"c\"}}";
+    NSError *error = nil;
+    [MAXJSONDictionaryController validityJSONString:json error:&error];
     
-    NSString * errMsg = [MAXJSONDictionaryController jsonSpecificError:error originString:json];
+    NSString * errMsg = [MAXJSONDictionaryController JSONSpecificFromError:error originString:json];
     NSLog(@"%@", errMsg);
     
     NSAssert(!error, error.description);
@@ -49,11 +50,11 @@
 
 - (void)testFormatterPrint
 {
-    NSString *json = @"{\"d\":[{\"q\":\"d\",\"b\":\"d\"},{\"q\":\"d\",\"b\":\"d\"},{\"q\":\"d\",\"b\":\"d\"}]}";
+    NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\",\"b\":\"b\",\"c\":\"c\"}}";
     
-    NSDictionary *dic = [MAXJSONDictionaryController json2Dictionary:json error:nil];
+    NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:nil];
     
-    NSString *string = [MAXJSONDictionaryController formatDictionary:dic composeSpace:nil];
+    NSString *string = [MAXJSONDictionaryController stringFromDictionary:dic composeSpace:nil];
     
     NSLog(@"%@", string);
 }
@@ -62,5 +63,6 @@
 {
     [self.controller didPressedCheckJSON:nil];
 }
+
 
 @end

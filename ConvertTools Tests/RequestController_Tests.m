@@ -31,21 +31,30 @@
 {
 //    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
+
 - (void)testRequest
 {
     NSError *error = nil;
     NSURL *url = [NSURL URLWithString:@""];
-    NSString *jsonString = @"{\"a\":\"b\"}";
+    NSString *jsonString = @"";
     
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding]; ;
+    NSString *responseString = [MAXProtocolEngine postRequestWithURL:url JSONString:jsonString error:&error];
     
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingAllowFragments
-                                                          error:&error];
+    if (responseString)
+    {
+        NSLog(@"%@", responseString);
+    }
+    else
+    {
+//        error
+        
+    }
     
-    NSString *responseString = [MAXProtocolEngine postRequestWithURL:url parameters:dic error:&error];
-    
-    NSLog(@"%@", responseString);
+}
+
+- (void)testPostRequestWithURL
+{
+    [MAXProtocolEngine postRequestWithURL:nil JSONString:@"{}" error:nil];
 }
 
 @end
