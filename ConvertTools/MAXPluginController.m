@@ -38,8 +38,8 @@
     BOOL validity = [MAXJSONDictionaryController validityJSONString:outputString error:&error];
     if (validity)
     {
-        NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:outputString error:nil];
-        [txtvConsole setString:[[dic description] chineseFromUnicode]];
+        NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:outputString error:nil];
+        [txtvConsole setString:[[MAXJSONDictionaryController stringWithDictionary:dictionary] chineseFromUnicode]];
     }
     else
     {

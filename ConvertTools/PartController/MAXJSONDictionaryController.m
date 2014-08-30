@@ -12,7 +12,8 @@
 
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error
 {
-    NSData *JSONData = [jsonString dataUsingEncoding:NSUnicodeStringEncoding];
+    NSString *replaceString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@"\u1111"];
+    NSData *JSONData = [replaceString dataUsingEncoding:NSUnicodeStringEncoding];
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:JSONData
                                                                options:NSJSONReadingMutableLeaves
                                                                  error:error];
@@ -70,7 +71,18 @@
     return nil;
 }
 
-+ (NSString *)stringFromDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space
++ (NSString *)compressJSONString:(NSString *)JSONString
+{
+    return [[JSONString stringByReplacingOccurrencesOfString:@"\r" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+
++ (NSString *)stringWithDictionary:(NSDictionary *)dictionary
+{
+    NSString *string = [self stringWithDictionary:dictionary composeSpace:nil];
+    return [string stringByReplacingOccurrencesOfString:@"\u1111" withString:@"\n"];
+}
+
++ (NSString *)stringWithDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space
 {
     NSMutableString *string = [NSMutableString string];
     
@@ -79,16 +91,24 @@
     if ([space length] > 0)
     {
         [spaceString appendString:space];
-        [spaceString appendString:@" "];
         s = space;
     }
     
-    [string appendString:[NSString stringWithFormat:@"%@{\n", s]];
+    [string appendString:[NSString stringWithFormat:@"%@{\r", s]];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
          if ([obj isKindOfClass:[NSDictionary class]])
          {
-             NSString *objString = [self stringFromDictionary:obj composeSpace:spaceString];
+             NSString *objString = [self stringWithDictionary:obj composeSpace:spaceString];
+             
+             NSString *regex = @"\",\\r\\s*\\}\\r";
+             NSRange regexRange = [objString rangeOfString:regex options:NSRegularExpressionSearch];
+             if (regexRange.location != NSNotFound)
+             {
+                 NSRange range = {regexRange.location, 2};
+                 objString = [objString stringByReplacingCharactersInRange:range withString:@"\""];
+             }
+             
              [string appendString:[NSString stringWithFormat:@"%@\"%@\" : %@", spaceString, key, objString]];
          }
          else if ([obj isKindOfClass:[NSArray class]])
@@ -99,20 +119,58 @@
               {
                   if ([objt isKindOfClass:[NSDictionary class]])
                   {
-                      NSString *objString = [self stringFromDictionary:objt composeSpace:spaceString];
+                      NSString *objString = [self stringWithDictionary:objt composeSpace:spaceString];
+                      NSString *regex = @"\",\\r\\s*\\}\\r";
+                      NSRange regexRange = [objString rangeOfString:regex options:NSRegularExpressionSearch];
+                      if (regexRange.location != NSNotFound)
+                      {
+                          NSRange range = {regexRange.location, 2};
+                          objString = [objString stringByReplacingCharactersInRange:range withString:@"\""];
+                      }
+                      
                       [string appendString:[NSString stringWithFormat:@"%@", objString]];
+                      NSRange range = {string.length - 2 , 2};
+                      [string replaceCharactersInRange:range withString:@"},\r"];
                   }
               }];
+             [string appendString:[NSString stringWithFormat:@"%@],\r", spaceString]];
              
-             [string appendString:[NSString stringWithFormat:@"%@]\n", spaceString]];
+             NSString *regex = @"\\}\\,\\r\\s*]";
+             NSRange regexRange = [string rangeOfString:regex options:NSRegularExpressionSearch];
+             if (regexRange.location != NSNotFound)
+             {
+                 NSRange range = {regexRange.location, 2};
+                 [string replaceCharactersInRange:range withString:@"}"];
+             }
          }
          else if ([obj isKindOfClass:[NSString class]])
          {
-             [string appendString:[NSString stringWithFormat:@"%@\"%@\" : \"%@\"\n", spaceString, key, obj]];
+             [string appendString:[NSString stringWithFormat:@"%@\"%@\" : \"%@\",\r", spaceString, key, obj]];
          }
      }];
     [spaceString deleteCharactersInRange:NSMakeRange(0, 2)];
-    [string appendString:[NSString stringWithFormat:@"%@}\n", spaceString]];
+    [string appendString:[NSString stringWithFormat:@"%@}\r", spaceString]];
+    
+    NSString *regex = @"\\],\\r\\s*\\}\\r";
+    NSRange regexRange = [string rangeOfString:regex options:NSRegularExpressionSearch];
+    if (regexRange.location != NSNotFound)
+    {
+        NSRange range = {regexRange.location, 2};
+        [string replaceCharactersInRange:range withString:@"]"];
+    }
+    
+    [@[@"}", @"]"] enumerateObjectsUsingBlock:^(NSString *sign, NSUInteger idx, BOOL *stop)
+    {
+        NSString *regex = [NSString stringWithFormat:@"\\%@\\r\\s*\\\"\\w*\\\"\\s*:", sign];
+        NSRange regexRange = [string rangeOfString:regex options:NSRegularExpressionSearch];
+        if (regexRange.location != NSNotFound)
+        {
+            NSRange range = {regexRange.location, 2};
+            NSString *replaceString = [NSString stringWithFormat:@"%@,\r", sign];
+            [string replaceCharactersInRange:range withString:replaceString];
+        }
+    }];
+    
     return string;
 }
 

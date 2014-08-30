@@ -44,7 +44,7 @@
  *
  *  @param error error
  *
- *  @return 文案
+ *  @return sting
  */
 + (NSString *)JSONDescriptionWithError:(NSError *)error;
 
@@ -54,18 +54,26 @@
  *  @param error
  *  @param originString
  *
- *  @return
+ *  @return string
  */
 + (NSString *)JSONSpecificFromError:(NSError *)error originString:(NSString *)originString;
+
+/**
+ *   压缩JSON String
+ *
+ *  @param JSONString
+ *
+ *  @return 压缩后string
+ */
++ (NSString *)compressJSONString:(NSString *)JSONString;
 
 /**
  *   格式化Dictionary展示
  *
  *  @param dictionary
- *  @param space      排版空白
  *
- *  @return 展示文案
+ *  @return string
  */
-+ (NSString *)stringFromDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space;
++ (NSString *)stringWithDictionary:(NSDictionary *)dictionary;
 
 @end

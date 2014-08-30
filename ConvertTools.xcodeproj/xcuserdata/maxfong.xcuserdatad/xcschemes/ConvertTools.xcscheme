@@ -47,6 +47,12 @@
                <Test
                   Identifier = "PluginController_Tests/testExample">
                </Test>
+               <Test
+                  Identifier = "PluginController_Tests/testpressedCheckJSON">
+               </Test>
+               <Test
+                  Identifier = "RequestController_Tests">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

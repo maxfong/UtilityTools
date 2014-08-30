@@ -13,9 +13,6 @@
 
 @interface MAXRequestController ()
 
-@property (nonatomic, retain) NSString *requestString;
-@property (nonatomic, retain) NSString *responseString;
-
 @end
 
 @implementation MAXRequestController
@@ -26,7 +23,7 @@
 {
     NSError *error;
     NSString *responseString = [MAXProtocolEngine postRequestWithURL:[self url]
-                                                          JSONString:self.requestString
+                                                          JSONString:[self JSONString]
                                                                error:&error];
     
     if (responseString)
@@ -52,12 +49,17 @@
     return [NSURL URLWithString:urlString];
 }
 
+- (NSString *)JSONString
+{
+    return txtvRequestInput.string ?: nil;
+}
+
 - (BOOL)formatterWithTextbox:(id)textBox content:(NSString *)content
 {
     if ([textBox isKindOfClass:[NSTextView class]])
     {
         NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:content error:nil];
-        [textBox setString:[[dictionary description] chineseFromUnicode]];
+        [textBox setString:[[MAXJSONDictionaryController stringWithDictionary:dictionary] chineseFromUnicode]];
         
         return YES;
     }

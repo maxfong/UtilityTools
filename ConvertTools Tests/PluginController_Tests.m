@@ -39,6 +39,7 @@
 - (void)testCheckJSON
 {
     NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\",\"b\":\"b\",\"c\":\"c\"}}";
+    
     NSError *error = nil;
     [MAXJSONDictionaryController validityJSONString:json error:&error];
     
@@ -52,9 +53,15 @@
 {
     NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\",\"b\":\"b\",\"c\":\"c\"}}";
     
-    NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:nil];
+    NSError *error = nil;
+    NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:&error];
     
-    NSString *string = [MAXJSONDictionaryController stringFromDictionary:dic composeSpace:nil];
+    NSString *string = [MAXJSONDictionaryController stringWithDictionary:dic];
+    
+    NSString *string1 = [MAXJSONDictionaryController compressJSONString:string];
+    
+    NSDictionary *dic1 = [MAXJSONDictionaryController dictionaryWithJSONString:string1 error:&error];
+    NSLog(@"%@", dic1);
     
     NSLog(@"%@", string);
 }
