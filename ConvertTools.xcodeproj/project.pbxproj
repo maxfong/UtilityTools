@@ -26,8 +26,6 @@
 		A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
 		A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */; };
 		A9A7104719AF26060096D546 /* MAXJSONDictionaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */; };
-		A9E4C41C19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */; };
-		A9E4C41D19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */; };
 		A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */; };
 		A9E4C42119AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */; };
 /* End PBXBuildFile section */
@@ -68,8 +66,6 @@
 		A99D65641974FBE400DBBCC7 /* MAXPluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXPluginController.m; sourceTree = "<group>"; };
 		A9A7104419AF26060096D546 /* MAXJSONDictionaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXJSONDictionaryController.h; sourceTree = "<group>"; };
 		A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXJSONDictionaryController.m; sourceTree = "<group>"; };
-		A9E4C41819AF084F00E3E181 /* NSTextField+copypaste.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+copypaste.h"; sourceTree = "<group>"; };
-		A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+copypaste.m"; sourceTree = "<group>"; };
 		A9E4C41E19AF086600E3E181 /* NSString+UnicodeConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeConvert.h"; sourceTree = "<group>"; };
 		A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeConvert.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,8 +190,6 @@
 		A9E4C41519AF084F00E3E181 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
-				A9E4C41819AF084F00E3E181 /* NSTextField+copypaste.h */,
-				A9E4C41919AF084F00E3E181 /* NSTextField+copypaste.m */,
 				A9E4C41E19AF086600E3E181 /* NSString+UnicodeConvert.h */,
 				A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */,
 			);
@@ -305,7 +299,6 @@
 				A9011C0119B01D630054BD2F /* MAXRequestController.m in Sources */,
 				A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */,
 				A970633C19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */,
-				A9E4C41D19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */,
 				A9362B62197659CE00CE1D6C /* ConvertTools_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +310,6 @@
 				A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */,
 				A970633B19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */,
 				A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */,
-				A9E4C41C19AF084F00E3E181 /* NSTextField+copypaste.m in Sources */,
 				A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
 				A9011C0019B01D630054BD2F /* MAXRequestController.m in Sources */,
 				A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
