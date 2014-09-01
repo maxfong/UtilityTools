@@ -12,7 +12,7 @@
 
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error
 {
-    NSString *replaceString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@"\u1111"];
+    NSString *replaceString = [self compressJSONString:jsonString];
     NSData *JSONData = [replaceString dataUsingEncoding:NSUnicodeStringEncoding];
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:JSONData
                                                                options:NSJSONReadingMutableLeaves
@@ -73,13 +73,20 @@
 
 + (NSString *)compressJSONString:(NSString *)JSONString
 {
-    return [[JSONString stringByReplacingOccurrencesOfString:@"\r" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSArray *array = @[@"\r", @"\n", @" "];
+    
+    __block NSString *resultString = JSONString;
+    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+    {
+        resultString = [resultString stringByReplacingOccurrencesOfString:obj withString:@""];
+    }];
+    
+    return resultString;
 }
 
 + (NSString *)stringWithDictionary:(NSDictionary *)dictionary
 {
-    NSString *string = [self stringWithDictionary:dictionary composeSpace:nil];
-    return [string stringByReplacingOccurrencesOfString:@"\u1111" withString:@"\n"];
+    return [self stringWithDictionary:dictionary composeSpace:nil];
 }
 
 + (NSString *)stringWithDictionary:(NSDictionary *)dictionary composeSpace:(NSString *)space

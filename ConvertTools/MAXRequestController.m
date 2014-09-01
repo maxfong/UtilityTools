@@ -58,9 +58,16 @@
 {
     if ([textBox isKindOfClass:[NSTextView class]])
     {
-        NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:content error:nil];
-        [textBox setString:[[MAXJSONDictionaryController stringWithDictionary:dictionary] chineseFromUnicode]];
-        
+        NSError *error;
+        NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:content error:&error];
+        if (error)
+        {
+            [textBox setString:content];
+        }
+        else
+        {
+            [textBox setString:[[MAXJSONDictionaryController stringWithDictionary:dictionary] chineseFromUnicode]];
+        }
         return YES;
     }
     return NO;
