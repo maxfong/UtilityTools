@@ -8,8 +8,13 @@
 
 #import <XCTest/XCTest.h>
 #import "MAXProtocolEngine.h"
+#import "MAXEntityOperationController.h"
+#import "MAXJSONDictionaryController.h"
+#import "MAXRequestController.h"
 
 @interface RequestController_Tests : XCTestCase
+
+@property (nonatomic, retain) MAXRequestController *controller;
 
 @end
 
@@ -18,6 +23,7 @@
 - (void)setUp
 {
     [super setUp];
+    self.controller = [[MAXRequestController alloc] init];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -59,30 +65,20 @@
 
 - (void)testFileManager
 {
-    NSFileManager *manager=[NSFileManager defaultManager];
-    
-    NSString *path = [NSString stringWithFormat:@"/Users/%@/Desktop/TCTEntityFiles", NSUserName()];
-    if (![manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil])
-    {
-        return NSLog(@"创建目录失败，请重试！");
-    }
-    
-    //移除目录所有文件
-    
-    
-    //创建文件
-    NSString *filePath = [NSString stringWithFormat:@"%@/1.h", path];
-    [manager createFileAtPath:filePath contents:nil attributes:nil];
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:filePath]; //以可写方式打开文件
-    
-    NSString *string = @"1";
-    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@", data);
-    
-    
-    [fileHandle writeData:data]; //写入文件内容
-    [fileHandle closeFile];     //关闭文件
+    NSString *json = @"{\"cityName\":\"a\",\"cityId\":\"b\",\"sceneryList\":{\"test\":\"a\",\"sceneryList1\":{\"test1\":\"a\"}},\"hotelList\":[{\"test3\":\"123\"}]}";
 
+    NSError *error = nil;
+    NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:&error];
+    
+    [MAXEntityOperationController createEntityFileWithDictionary:dic
+                                                           model:TCTResponseEntity
+                                                       directory:TCTUserDesktopDirectory
+                                                           error:nil];
+}
+
+- (void)testCreateRequestFile
+{
+    [self.controller didPressedCreateRequestFile:nil];
 }
 
 @end

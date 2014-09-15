@@ -1,0 +1,16 @@
+//
+//  ___REQUESTCOMPLIEFILENAME___
+//  ___PROJECTNAME___
+//
+//  Auto Created by maxfong's UtilityTools on ___DATE___.
+//  Operation Person Name is ___USERNAME___
+//  ___COPYRIGHT___
+//
+
+#import "___REQUESTFILEBASENAME___.h" ___SUBIMPLEMENTATION___
+
+@implementation ___FILEREQUESTNAMEASIDENTIFIER___
+
+___REQUESTINIT___
+
+@end

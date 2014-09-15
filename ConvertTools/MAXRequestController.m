@@ -10,6 +10,7 @@
 #import "MAXProtocolEngine.h"
 #import "NSString+UnicodeConvert.h"
 #import "MAXJSONDictionaryController.h"
+#import "MAXEntityOperationController.h"
 
 @interface MAXRequestController ()
 
@@ -22,13 +23,11 @@
 - (IBAction)didPressedSubmitRequest:sender
 {
     NSError *error;
-    NSString *responseString = [MAXProtocolEngine postRequestWithURL:[self url]
-                                                          JSONString:[self JSONString]
-                                                               error:&error];
+    NSString *requestString = [self requestStringWithError:&error];
     
-    if (responseString)
+    if (requestString)
     {
-        [self formatterWithTextbox:txtvResponseOutput content:responseString];
+        [self formatterWithTextbox:txtvResponseOutput content:requestString];
     }
     else
     {
@@ -42,6 +41,34 @@
     [self formatterWithTextbox:txtvRequestInput content:string];
 }
 
+- (IBAction)didPressedCreateRequestFile:sender
+{
+    NSError *error;
+    NSString *requestString = [self JSONString];
+    NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:requestString error:&error];
+    if (dictionary)
+    {
+        [MAXEntityOperationController createEntityFileWithDictionary:dictionary[@"request"][@"body"]
+                                                               model:TCTRequestEntity
+                                                           directory:TCTUserDesktopDirectory
+                                                               error:nil];
+    }
+}
+
+- (IBAction)didPressedCreateResponseFile:sender
+{
+    NSError *error = nil;
+    NSString *responseString = txtvResponseOutput.string ?: @"";
+    NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:responseString error:&error];
+    if (dictionary)
+    {
+        [MAXEntityOperationController createEntityFileWithDictionary:dictionary[@"response"][@"body"]
+                                                               model:TCTResponseEntity
+                                                           directory:TCTUserDesktopDirectory
+                                                               error:nil];
+    }
+}
+
 #pragma mark - Private
 - (NSURL *)url
 {
@@ -51,7 +78,14 @@
 
 - (NSString *)JSONString
 {
-    return txtvRequestInput.string ?: nil;
+    return txtvRequestInput.string ?: @"";
+}
+
+- (NSString *)requestStringWithError:(NSError **)error
+{
+    return [MAXProtocolEngine postRequestWithURL:[self url]
+                                      JSONString:[self JSONString]
+                                           error:error] ?: @"";
 }
 
 - (BOOL)formatterWithTextbox:(id)textBox content:(NSString *)content

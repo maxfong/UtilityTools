@@ -1,0 +1,15 @@
+//
+//  ___REQUESTHEADFILENAME___
+//  ___PROJECTNAME___
+//
+//  Auto Created by maxfong's UtilityTools on ___DATE___.
+//  Operation Person Name is ___USERNAME___
+//  ___COPYRIGHT___
+//
+
+___IMPORTHEADER_ENTITYFILEREQUESTSUPERCLASS___ ___IMPORTHEADER_ENTITYFILEREFERENCE___
+
+@interface ___FILEREQUESTNAMEASIDENTIFIER___ : ___VARIABLE_ENTITYFILEREQUESTSUPERCLASS___
+
+___PROPERTYNAME___
+@end

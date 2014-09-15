@@ -1,0 +1,14 @@
+//
+//  ___RESPONSECOMPLIEFILENAME___
+//  ___PROJECTNAME___
+//
+//  Auto Created by maxfong's UtilityTools on ___DATE___.
+//  Operation Person Name is ___USERNAME___
+//  ___COPYRIGHT___
+//
+
+#import "___RESPONSEFILEBASENAME___.h" ___SUBIMPLEMENTATION___
+
+@implementation ___FILERESPONSENAMEASIDENTIFIER___
+
+@end

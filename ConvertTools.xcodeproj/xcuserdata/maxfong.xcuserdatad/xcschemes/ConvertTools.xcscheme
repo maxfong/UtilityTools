@@ -42,6 +42,9 @@
                   Identifier = "ConvertTools_Tests">
                </Test>
                <Test
+                  Identifier = "PluginController_Tests">
+               </Test>
+               <Test
                   Identifier = "PluginController_Tests/testCheckJSON">
                </Test>
                <Test
@@ -51,7 +54,16 @@
                   Identifier = "PluginController_Tests/testpressedCheckJSON">
                </Test>
                <Test
-                  Identifier = "RequestController_Tests">
+                  Identifier = "RequestController_Tests/testExample">
+               </Test>
+               <Test
+                  Identifier = "RequestController_Tests/testFileManager">
+               </Test>
+               <Test
+                  Identifier = "RequestController_Tests/testPostRequestWithURL">
+               </Test>
+               <Test
+                  Identifier = "RequestController_Tests/testRequest">
                </Test>
             </SkippedTests>
          </TestableReference>

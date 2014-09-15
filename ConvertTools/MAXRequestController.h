@@ -16,5 +16,7 @@
 }
 
 - (IBAction)didPressedSubmitRequest:sender;
+- (IBAction)didPressedCreateRequestFile:sender;
+- (IBAction)didPressedCreateResponseFile:sender;
 
 @end
