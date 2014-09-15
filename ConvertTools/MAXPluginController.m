@@ -9,6 +9,7 @@
 #import "MAXPluginController.h"
 #import "NSString+UnicodeConvert.h"
 #import "MAXJSONDictionaryController.h"
+#import "MAXEntityOperationController.h"
 
 @implementation MAXPluginController
 
@@ -27,7 +28,7 @@
 - (IBAction)didPressedAlert:sender
 {
     NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"更多想法请联系maxfong"];
-    [alert runModal];
+    [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
 }
 
 - (IBAction)didPressedCheckJSON:sender
@@ -48,13 +49,24 @@
         NSString *messageText = @"验证 JSON 时出现错误";
         
         NSAlert *alert = [NSAlert alertWithMessageText:messageText defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:message, nil];
-        [alert runModal];
+        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }
 }
 
 - (IBAction)didPressedFileCreate:sender
 {
-    
+    NSString *outputString = txtvConsole.string ?: @"";
+    NSError *error;
+    NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:outputString error:&error];
+    if (dictionary)
+    {
+        [MAXEntityOperationController createEntityFileWithDictionary:dictionary
+                                                               model:TCTResponseEntity
+                                                           directory:TCTUserDesktopDirectory
+                                                               error:nil];
+        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
+        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+    }
 }
 
 @end

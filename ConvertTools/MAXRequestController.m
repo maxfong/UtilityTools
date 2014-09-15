@@ -37,14 +37,18 @@
 
 - (IBAction)didPressedFormatterRequest:sender
 {
-    NSString *string = txtvRequestInput.string ?: @"";
-    [self formatterWithTextbox:txtvRequestInput content:string];
+    [self formatterWithTextbox:txtvRequestInput content:[self requestString]];
+}
+
+- (IBAction)didPressedFormatterResponse:sender
+{
+    [self formatterWithTextbox:txtvResponseOutput content:[self responseString]];
 }
 
 - (IBAction)didPressedCreateRequestFile:sender
 {
     NSError *error;
-    NSString *requestString = [self JSONString];
+    NSString *requestString = [self requestString];
     NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:requestString error:&error];
     if (dictionary)
     {
@@ -52,13 +56,15 @@
                                                                model:TCTRequestEntity
                                                            directory:TCTUserDesktopDirectory
                                                                error:nil];
+        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
+        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }
 }
 
 - (IBAction)didPressedCreateResponseFile:sender
 {
     NSError *error = nil;
-    NSString *responseString = txtvResponseOutput.string ?: @"";
+    NSString *responseString = [self responseString];
     NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:responseString error:&error];
     if (dictionary)
     {
@@ -66,7 +72,22 @@
                                                                model:TCTResponseEntity
                                                            directory:TCTUserDesktopDirectory
                                                                error:nil];
+        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
+        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }
+}
+
+- (IBAction)didPressedCreateFileSaveDesktop:sender
+{
+    NSString *string = [NSString stringWithFormat:@"%@\n\n%@\n\n%@", [MAXJSONDictionaryController compressJSONString:[self requestString]], [MAXJSONDictionaryController compressJSONString:[[self url] description]], [MAXJSONDictionaryController compressJSONString:[self responseString]]];
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSData *contentData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    
+    int identifier = (arc4random() % 9527) + 1;
+    NSString *filePath = [NSString stringWithFormat:@"/Users/%@/Desktop/%d.txt", NSUserName(), identifier];
+    
+    [manager createFileAtPath:filePath contents:contentData attributes:nil];
 }
 
 #pragma mark - Private
@@ -76,15 +97,20 @@
     return [NSURL URLWithString:urlString];
 }
 
-- (NSString *)JSONString
+- (NSString *)requestString
 {
     return txtvRequestInput.string ?: @"";
+}
+
+- (NSString *)responseString
+{
+    return txtvResponseOutput.string ?: @"";
 }
 
 - (NSString *)requestStringWithError:(NSError **)error
 {
     return [MAXProtocolEngine postRequestWithURL:[self url]
-                                      JSONString:[self JSONString]
+                                      JSONString:[self requestString]
                                            error:error] ?: @"";
 }
 
