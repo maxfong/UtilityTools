@@ -269,7 +269,7 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
     
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
     {
-        if ([obj isKindOfClass:[NSArray class]])
+        if ([obj isKindOfClass:[NSArray class]] && [obj count] > 0)
         {
             [objectString appendString:[self subObjectStringWithDictionary:obj[0] className:key fileModel:fileModel]];
         }
@@ -320,7 +320,7 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
     __block NSMutableString *objectString = [NSMutableString string];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
     {
-        if ([obj isKindOfClass:[NSArray class]])
+        if ([obj isKindOfClass:[NSArray class]] && [obj count] > 0)
         {
             if ([obj[0] isKindOfClass:[NSDictionary class]])
             {
