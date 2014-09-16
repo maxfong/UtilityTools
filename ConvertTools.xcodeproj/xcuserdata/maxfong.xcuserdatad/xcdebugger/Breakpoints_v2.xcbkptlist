@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConvertTools/Tools/MAXProtocolEngine.m"
-            timestampString = "432456455.919348"
+            filePath = "ConvertTools/TCTEntityModel/MAXEntityModelReplace.m"
+            timestampString = "432530806.337034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "+postRequestWithURL:JSONString:error:"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "+propertyStringsWithDictionary:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, TCTSearchPathDirectory)
 + (BOOL)createEntityFileWithDictionary:(NSDictionary *)dictionary
                                  model:(TCTFileEntityModel)model
                              directory:(TCTSearchPathDirectory)directory
+                               options:(NSDictionary *)options
                                  error:(NSError **)error;
 
 @end

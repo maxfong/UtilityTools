@@ -71,8 +71,10 @@
     NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:&error];
     
     [MAXEntityOperationController createEntityFileWithDictionary:dic
-                                                           model:TCTResponseEntity
+                                                           model:TCTRequestEntity
                                                        directory:TCTUserDesktopDirectory
+                                                         options:@{TCTModelFileServerNameKey: @"GetList", TCTModelFileInterfaceKey
+                                                                   : @""}
                                                            error:nil];
 }
 

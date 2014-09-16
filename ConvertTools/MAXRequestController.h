@@ -11,6 +11,7 @@
 @interface MAXRequestController : NSWindowController
 {
     IBOutlet NSTextField    *txtfInterfaceURL;
+    IBOutlet NSTextField    *txtfServerName;
     IBOutlet NSTextView     *txtvRequestInput;
     IBOutlet NSTextView     *txtvResponseOutput;
 }

@@ -10,7 +10,7 @@
 
 @implementation MAXEntityOperationController
 
-+ (BOOL)createEntityFileWithDictionary:(NSDictionary *)dictionary model:(TCTFileEntityModel)model directory:(TCTSearchPathDirectory)directory error:(NSError **)error
++ (BOOL)createEntityFileWithDictionary:(NSDictionary *)dictionary model:(TCTFileEntityModel)model directory:(TCTSearchPathDirectory)directory options:(NSDictionary *)options error:(NSError **)error
 {
     NSFileManager *manager=[NSFileManager defaultManager];
     
@@ -25,30 +25,30 @@
         for (int i = 1; i < 3; i++)
         {
             //读出来后再改->替换响应的符号
-            NSData *contentData = [self contentWithModel:(model - i) originalData:dictionary];
+            NSData *contentData = [self contentWithModel:(model - i) originalData:dictionary options:options];
             
             //准备创建文件，通过数据获取服务名，创建名称
-            NSString *filePath = [self filePathWithModel:(model - i)];
+            NSString *filePath = [self filePathWithModel:(model - i) options:options];
             [manager createFileAtPath:filePath contents:contentData attributes:nil];
         }
     }
     else
     {
         //读出来后再改->替换响应的符号
-        NSData *contentData = [self contentWithModel:model originalData:dictionary];
+        NSData *contentData = [self contentWithModel:model originalData:dictionary options:options];
         
         //准备创建文件，通过数据获取服务名，创建名称
-        NSString *filePath = [self filePathWithModel:model];
+        NSString *filePath = [self filePathWithModel:model options:options];
         [manager createFileAtPath:filePath contents:contentData attributes:nil];
     }
     return NO;
 }
 
-+ (NSData *)contentWithModel:(TCTFileEntityModel)model originalData:(NSDictionary *)dictionary
++ (NSData *)contentWithModel:(TCTFileEntityModel)model originalData:(NSDictionary *)dictionary options:(NSDictionary *)options
 {
     NSString *modelContent = [self stringWithMode:model];
     //替换数据
-    NSString *replaceString = [MAXEntityModelReplace replaceStringWithString:modelContent object:dictionary fileModel:model];
+    NSString *replaceString = [MAXEntityModelReplace replaceStringWithString:modelContent object:dictionary fileModel:model options:options];
     
     return [replaceString dataUsingEncoding:NSUTF8StringEncoding];
 }
@@ -72,10 +72,10 @@
 }
 
 //通过服务名和模型确定文件名称和路径
-+ (NSString *)filePathWithModel:(TCTFileEntityModel)model
++ (NSString *)filePathWithModel:(TCTFileEntityModel)model options:(NSDictionary *)options
 {
     NSString *saveFileDirectory = [self saveFileDirectory];
-    NSString *fileName = [self fileNameWithModel:model];
+    NSString *fileName = [self fileNameWithModel:model options:options];
     return [NSString stringWithFormat:@"%@/%@", saveFileDirectory, fileName];
 }
 
@@ -102,25 +102,23 @@
     }
     return modelName;
 }
-+ (NSString *)fileNameWithModel:(TCTFileEntityModel)model
++ (NSString *)fileNameWithModel:(TCTFileEntityModel)model options:(NSDictionary *)options
 {
     NSString *fileName = nil;
-//    int identifier = (arc4random() % 9527) + 1;
-    int identifier = 9527;
     
     switch (model)
     {
         case TCTRequestHeadEntity:
-            fileName = [NSString stringWithFormat:@"Request%i.h", identifier];
+            fileName = [NSString stringWithFormat:@"Request%@.h", options[TCTModelFileServerNameKey]];
             break;
         case TCTRequestComplieEntity:
-            fileName = [NSString stringWithFormat:@"Request%i.m", identifier];
+            fileName = [NSString stringWithFormat:@"Request%@.m", options[TCTModelFileServerNameKey]];
             break;
         case TCTResponseHeadEntity:
-            fileName = [NSString stringWithFormat:@"Response%i.h", identifier];
+            fileName = [NSString stringWithFormat:@"Response%@.h", options[TCTModelFileServerNameKey]];
             break;
         case TCTResponseComplieEntity:
-            fileName = [NSString stringWithFormat:@"Response%i.m", identifier];
+            fileName = [NSString stringWithFormat:@"Response%@.m", options[TCTModelFileServerNameKey]];
             break;
         default:
             fileName = @"unknown";

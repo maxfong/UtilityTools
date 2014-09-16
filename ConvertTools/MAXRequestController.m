@@ -37,54 +37,104 @@
 
 - (IBAction)didPressedFormatterRequest:sender
 {
-    NSString *string = txtvRequestInput.string ?: @"";
-    [self formatterWithTextbox:txtvRequestInput content:string];
+    [self formatterWithTextbox:txtvRequestInput content:[self requestString]];
+}
+
+- (IBAction)didPressedFormatterResponse:sender
+{
+    [self formatterWithTextbox:txtvResponseOutput content:[self responseString]];
 }
 
 - (IBAction)didPressedCreateRequestFile:sender
 {
     NSError *error;
-    NSString *requestString = [self JSONString];
+    NSString *requestString = [self requestString];
     NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:requestString error:&error];
     if (dictionary)
     {
-        [MAXEntityOperationController createEntityFileWithDictionary:dictionary[@"request"][@"body"]
-                                                               model:TCTRequestEntity
-                                                           directory:TCTUserDesktopDirectory
-                                                               error:nil];
+        NSMutableDictionary *requestDictionary = [dictionary[@"request"][@"body"] mutableCopy];
+        [requestDictionary removeObjectForKey:@"clientInfo"];
+        [self createEntityWithDictionary:requestDictionary
+                                   model:TCTRequestEntity];
     }
 }
 
 - (IBAction)didPressedCreateResponseFile:sender
 {
     NSError *error = nil;
-    NSString *responseString = txtvResponseOutput.string ?: @"";
+    NSString *responseString = [self responseString];
     NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:responseString error:&error];
     if (dictionary)
     {
-        [MAXEntityOperationController createEntityFileWithDictionary:dictionary[@"response"][@"body"]
-                                                               model:TCTResponseEntity
-                                                           directory:TCTUserDesktopDirectory
-                                                               error:nil];
+        [self createEntityWithDictionary:dictionary[@"response"][@"body"]
+                                   model:TCTResponseEntity];
     }
 }
 
+- (IBAction)didPressedCreateFileSaveDesktop:sender
+{
+    NSString *string = [NSString stringWithFormat:@"%@\n\n%@\n\n%@", [MAXJSONDictionaryController compressJSONString:[self requestString]], [MAXJSONDictionaryController compressJSONString:[[self url] description]], [MAXJSONDictionaryController compressJSONString:[self responseString]]];
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSData *contentData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    
+    int identifier = (arc4random() % 9527) + 1;
+    NSString *filePath = [NSString stringWithFormat:@"/Users/%@/Desktop/%d.txt", NSUserName(), identifier];
+    
+    [manager createFileAtPath:filePath contents:contentData attributes:nil];
+}
+
 #pragma mark - Private
+- (NSString *)urlString
+{
+    return txtfInterfaceURL.stringValue ?: nil;
+}
 - (NSURL *)url
 {
-    NSString *urlString = txtfInterfaceURL.stringValue ?: nil;
+    NSString *urlString = [self urlString];
     return [NSURL URLWithString:urlString];
 }
 
-- (NSString *)JSONString
+- (NSString *)serverName
+{
+    return txtfServerName.stringValue ?: nil;
+}
+
+- (NSString *)requestString
 {
     return txtvRequestInput.string ?: @"";
+}
+
+- (NSString *)responseString
+{
+    return txtvResponseOutput.string ?: @"";
+}
+
+- (NSDictionary *)optionsDictionary
+{
+    NSString *serverName = [self serverName] ?: @"Test";
+    
+    NSArray *separateArrar = @[@"leapi/", @"0/", @"8/", @"sbook", @"ation"];
+    __block NSString *interface = @"";
+    NSString *urlString = [[self urlString] lowercaseString] ?: nil;
+    [separateArrar enumerateObjectsUsingBlock:^(NSString *value, NSUInteger idx, BOOL *stop)
+    {
+        NSArray *tmpArray = [urlString componentsSeparatedByString:value];
+        if ([tmpArray count] > 1)
+        {
+            interface = [tmpArray lastObject];
+            *stop = YES;
+        }
+    }];
+    
+    return @{TCTModelFileServerNameKey: serverName,
+             TCTModelFileInterfaceKey : interface};
 }
 
 - (NSString *)requestStringWithError:(NSError **)error
 {
     return [MAXProtocolEngine postRequestWithURL:[self url]
-                                      JSONString:[self JSONString]
+                                      JSONString:[self requestString]
                                            error:error] ?: @"";
 }
 
@@ -105,6 +155,25 @@
         return YES;
     }
     return NO;
+}
+
+- (void)createEntityWithDictionary:(NSDictionary *)dictionary model:(TCTFileEntityModel)model
+{
+    if ([[self serverName] length] > 0 && dictionary)
+    {
+        [MAXEntityOperationController createEntityFileWithDictionary:dictionary
+                                                               model:model
+                                                           directory:TCTUserDesktopDirectory
+                                                             options:[self optionsDictionary]
+                                                               error:nil];
+        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
+        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+    }
+    else
+    {
+        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"请输入服务名(文件名)...", nil];
+        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+    }
 }
 
 @end
