@@ -45,11 +45,14 @@
     else
     {
         NSString *errorMsg = [MAXJSONDictionaryController JSONSpecificFromError:error originString:outputString];
-        NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionaryController JSONDescriptionWithError:error], errorMsg];
-        NSString *messageText = @"验证 JSON 时出现错误";
-        
-        NSAlert *alert = [NSAlert alertWithMessageText:messageText defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:message, nil];
-        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        if ([errorMsg length] > 0)
+        {
+            NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionaryController JSONDescriptionWithError:error], errorMsg];
+            NSString *messageText = @"验证 JSON 时出现错误";
+            
+            NSAlert *alert = [NSAlert alertWithMessageText:messageText defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:message, nil];
+            [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        }
     }
 }
 

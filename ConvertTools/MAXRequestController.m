@@ -87,7 +87,7 @@
 #pragma mark - Private
 - (NSString *)urlString
 {
-    return txtfInterfaceURL.stringValue ?: nil;
+    return [txtfInterfaceURL.stringValue stringByReplacingOccurrencesOfString:@" " withString:@""] ?: nil;
 }
 - (NSURL *)url
 {
@@ -97,17 +97,17 @@
 
 - (NSString *)serverName
 {
-    return txtfServerName.stringValue ?: @"Test";
+    return [txtfServerName.stringValue stringByReplacingOccurrencesOfString:@" " withString:@""]?: @"Test";
 }
 
 - (NSString *)requestString
 {
-    return txtvRequestInput.string ?: @"";
+    return [txtvRequestInput.string stringByReplacingOccurrencesOfString:@" " withString:@""]?: @"";
 }
 
 - (NSString *)responseString
 {
-    return txtvResponseOutput.string ?: @"";
+    return [txtvResponseOutput.string stringByReplacingOccurrencesOfString:@" " withString:@""]?: @"";
 }
 
 - (NSDictionary *)optionsDictionary
