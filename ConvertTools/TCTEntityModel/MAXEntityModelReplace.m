@@ -318,7 +318,6 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
 + (NSString *)refereceStringWithDictionary:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel
 {
     __block NSMutableString *objectString = [NSMutableString string];
-    [objectString appendString:@"\n"];
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
     {
         if ([obj isKindOfClass:[NSArray class]])
