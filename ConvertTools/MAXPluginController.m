@@ -63,6 +63,7 @@
         [MAXEntityOperationController createEntityFileWithDictionary:dictionary
                                                                model:TCTResponseEntity
                                                            directory:TCTUserDesktopDirectory
+                                                             options:@{TCTModelFileServerNameKey : @"Test"}
                                                                error:nil];
         NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
         [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];

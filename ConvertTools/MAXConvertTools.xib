@@ -22,6 +22,7 @@
         <customObject id="BoG-sn-DOQ" customClass="MAXRequestController">
             <connections>
                 <outlet property="txtfInterfaceURL" destination="D7O-vQ-Vd0" id="UeY-9T-08l"/>
+                <outlet property="txtfServerName" destination="iAR-NZ-ou7" id="eet-OA-15t"/>
                 <outlet property="txtvRequestInput" destination="RdI-Gd-MQB" id="hXD-Yb-bAd"/>
                 <outlet property="txtvResponseOutput" destination="JxT-mv-IMS" id="JXH-Cb-RcY"/>
             </connections>
@@ -59,7 +60,6 @@
         </menu>
         <window title="Unicode转码" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="LMb-ef-JLU" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="447" y="279" width="400" height="350"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -142,7 +142,6 @@
         </window>
         <window title="JSONFormat" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="Hlu-8f-MOi" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="387" y="300" width="626" height="428"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -241,7 +240,6 @@
         </window>
         <window title="接口测试" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="GvE-WG-lyz" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES" HUD="YES"/>
-            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="415" y="218" width="626" height="482"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -251,7 +249,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="D7O-vQ-Vd0">
-                        <rect key="frame" x="10" y="450" width="607" height="22"/>
+                        <rect key="frame" x="10" y="450" width="398" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="请输入URL..." drawsBackground="YES" id="gWu-FD-6PF">
                             <font key="font" metaFont="system"/>
@@ -383,6 +381,15 @@
                             <action selector="didPressedCreateFileSaveDesktop:" target="BoG-sn-DOQ" id="ZSt-Jg-VJR"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" id="iAR-NZ-ou7">
+                        <rect key="frame" x="416" y="450" width="201" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="服务名(首字母大写)..." drawsBackground="YES" id="YAb-L1-z7w">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>

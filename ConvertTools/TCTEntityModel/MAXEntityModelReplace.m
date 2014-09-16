@@ -56,49 +56,52 @@ typedef NS_ENUM(NSUInteger, TCTReplicaModel)
 @"___PROPERTYNAME___"\
 ];
 
+NSString *const TCTModelFileServerNameKey = @"serverName";
+NSString *const TCTModelFileInterfaceKey = @"interface";
+
 @implementation MAXEntityModelReplace
 
-+ (NSString *)replaceStringWithString:(NSString *)string object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel
++ (NSString *)replaceStringWithString:(NSString *)string object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options
 {
     __block NSString *originString = [string copy];
     NSArray *replaceModels = replicaModelArray;
     __block typeof(self) weakSelf = self;
     [replaceModels enumerateObjectsUsingBlock:^(NSString *value, NSUInteger idx, BOOL *stop)
      {
-         NSString *replaceString = [weakSelf replaceStringWithKey:value object:dictionary fileModel:fileModel];
+         NSString *replaceString = [weakSelf replaceStringWithKey:value object:dictionary fileModel:fileModel options:options];
          originString = [originString stringByReplacingOccurrencesOfString:value withString:replaceString];
      }];
     return originString;
 }
 
-+ (NSString *)replaceStringWithKey:(NSString *)key object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel
++ (NSString *)replaceStringWithKey:(NSString *)key object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options
 {
     NSArray *replaceModels = replicaModelArray;
-    return [self replaceStringWithModel:[replaceModels indexOfObject:key] object:dictionary fileModel:fileModel];
+    return [self replaceStringWithModel:[replaceModels indexOfObject:key] object:dictionary fileModel:fileModel options:options];
 }
 
-+ (NSString *)replaceStringWithModel:(TCTReplicaModel)model object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel
++ (NSString *)replaceStringWithModel:(TCTReplicaModel)model object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options
 {
     switch (model)
     {
         case ___REQUESTHEADFILENAME___:
         {
-            return @"Request<#serverName#>.h";
+            return [NSString stringWithFormat:@"Request%@.h", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___REQUESTCOMPLIEFILENAME___:
         {
-            return @"Request<#serverName#>.m";
+            return [NSString stringWithFormat:@"Request%@.m", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___RESPONSEHEADFILENAME___:
         {
-            return @"Response<#serverName#>.h";
+            return [NSString stringWithFormat:@"Response%@.h", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___RESPONSECOMPLIEFILENAME___:
         {
-            return @"Response<#serverName#>.m";
+            return [NSString stringWithFormat:@"Response%@.m", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___PROJECTNAME___:
@@ -136,12 +139,12 @@ typedef NS_ENUM(NSUInteger, TCTReplicaModel)
             break;
         case ___FILEREQUESTNAMEASIDENTIFIER___:
         {
-            return @"Request<#serverName#>";
+            return [NSString stringWithFormat:@"Request%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___FILERESPONSENAMEASIDENTIFIER___:
         {
-            return @"Response<#serverName#>";
+            return [NSString stringWithFormat:@"Response%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___VARIABLE_ENTITYFILEREQUESTSUPERCLASS___:
@@ -156,25 +159,26 @@ typedef NS_ENUM(NSUInteger, TCTReplicaModel)
             break;
         case ___REQUESTFILEBASENAME___:
         {
-            return @"Request<#serverName#>";
+            return [NSString stringWithFormat:@"Request%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___RESPONSEFILEBASENAME___:
         {
-            return @"Response<#serverName#>";
+            return [NSString stringWithFormat:@"Response%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
         case ___REQUESTINIT___:
         {
-            return @"- (id)init\n\
+            NSString *serverName = ([options[TCTModelFileServerNameKey] length] > 0) ? options[TCTModelFileServerNameKey] : nil;
+            NSString *interface = ([options[TCTModelFileInterfaceKey] length] > 0) ? [options[TCTModelFileInterfaceKey] lowercaseString] : nil;
+            return [NSString stringWithFormat:@"- (id)init\n\
 {\n\
     if (self = [super init])\n\
     {\n\
-        [self setInterfaceURL:@\"/<#interfaceURL#>\" Type:outer_4_Domain];\n\
-        self.serviceName = @\"<#serverName#>\";\n\
+        [self setInterfaceURL:@\"/%@\" Type:outer_4_Domain];\n\
+        self.serviceName = @\"%@\";\n\
     }\n\
-    return self;\n\
-}";
+    return self;\n}", interface ?:@"<#interface#>", serverName ?: @"<#serverName#>"];
         }
             break;
         case ___IMPORTHEADER_ENTITYFILEREFERENCE___:
@@ -198,17 +202,17 @@ typedef NS_ENUM(NSUInteger, TCTReplicaModel)
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
          NSString *propertyString = nil;
-         if ([obj isKindOfClass:[NSString class]])
-         {
-             propertyString = [self propertyStringWithStringName:key];
-         }
-         else if ([obj isKindOfClass:[NSArray class]])
+         if ([obj isKindOfClass:[NSArray class]])
          {
              propertyString = [self propertyStringWithArrayName:key];
          }
          else if ([obj isKindOfClass:[NSDictionary class]])
-         {
+         {propertyString = [self propertyStringWithStringName:key];
              propertyString = [self propertyStringWithDictionaryName:key];
+         }
+         else
+         {
+             propertyString = [self propertyStringWithStringName:key];
          }
          [propertyStrings appendString:propertyString];
      }];

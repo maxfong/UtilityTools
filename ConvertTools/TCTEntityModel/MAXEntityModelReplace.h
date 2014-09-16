@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+FOUNDATION_EXPORT NSString *const TCTModelFileServerNameKey;    // NSString
+FOUNDATION_EXPORT NSString *const TCTModelFileInterfaceKey;     // NSString
+
 typedef NS_ENUM(NSUInteger, TCTFileEntityModel)
 {
     TCTUnknownEntity,
@@ -22,6 +25,6 @@ typedef NS_ENUM(NSUInteger, TCTFileEntityModel)
 
 @interface MAXEntityModelReplace : NSObject
 
-+ (NSString *)replaceStringWithString:(NSString *)string object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel;
++ (NSString *)replaceStringWithString:(NSString *)string object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options;
 
 @end
