@@ -25,7 +25,7 @@
     NSError *error;
     NSString *requestString = [self requestStringWithError:&error];
     
-    if (requestString)
+    if ([requestString length] > 0)
     {
         [self formatterWithTextbox:txtvResponseOutput content:requestString];
     }
@@ -97,7 +97,7 @@
 
 - (NSString *)serverName
 {
-    return txtfServerName.stringValue ?: nil;
+    return txtfServerName.stringValue ?: @"Test";
 }
 
 - (NSString *)requestString
@@ -112,7 +112,7 @@
 
 - (NSDictionary *)optionsDictionary
 {
-    NSString *serverName = [self serverName] ?: @"Test";
+    NSString *serverName = [self serverName];
     
     NSArray *separateArrar = @[@"leapi/", @"0/", @"8/", @"sbook", @"ation"];
     __block NSString *interface = @"";
@@ -159,7 +159,7 @@
 
 - (void)createEntityWithDictionary:(NSDictionary *)dictionary model:(TCTFileEntityModel)model
 {
-    if ([[self serverName] length] > 0 && dictionary)
+    if (dictionary)
     {
         [MAXEntityOperationController createEntityFileWithDictionary:dictionary
                                                                model:model
@@ -167,11 +167,6 @@
                                                              options:[self optionsDictionary]
                                                                error:nil];
         NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
-        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
-    }
-    else
-    {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"请输入服务名(文件名)...", nil];
         [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }
 }

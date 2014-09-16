@@ -242,19 +242,19 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
             case TCTRequestHeadEntity:
             case TCTResponseHeadEntity:
             {
-                [objectString appendString:[NSString stringWithFormat:@"\n@interface %@ : NSObject\n\n", className]];
+                [objectString appendString:[NSString stringWithFormat:@"\n\n@interface %@ : NSObject\n\n", className]];
                 
                 NSString *propertyString = [self propertyStringsWithDictionary:dictionary];
                 [objectString appendString:propertyString];
                 
-                [objectString appendString:@"\n@end\n"];
+                [objectString appendString:@"\n@end"];
             }
                 break;
             case TCTRequestComplieEntity:
             case TCTResponseComplieEntity:
             {
-                [objectString appendString:[NSString stringWithFormat:@"\n@implementation %@\n\n", className]];
-                [objectString appendString:@"\n@end\n"];
+                [objectString appendString:[NSString stringWithFormat:@"\n\n@implementation %@\n\n", className]];
+                [objectString appendString:@"\n@end"];
             }
             default:
                 break;
