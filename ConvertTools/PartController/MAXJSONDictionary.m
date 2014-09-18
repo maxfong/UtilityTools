@@ -43,7 +43,7 @@
 
 + (NSString *)JSONSpecificFromError:(NSError *)error originString:(NSString *)originString
 {
-    if (error)
+    if (error && [originString length] > 0)
     {
         NSString *string = [self JSONDescriptionWithError:error];
         NSArray *array = [string componentsSeparatedByString:@" "];

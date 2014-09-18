@@ -25,7 +25,7 @@
     NSError *error;
     NSString *requestString = [self requestStringWithError:&error];
     
-    if (requestString)
+    if ([requestString length] > 0)
     {
         [self formatterWithTextbox:txtvResponseOutput content:requestString];
     }
@@ -91,7 +91,7 @@
 #pragma mark - Private
 - (NSString *)urlString
 {
-    return txtfInterfaceURL.stringValue ?: nil;
+    return [txtfInterfaceURL.stringValue stringByReplacingOccurrencesOfString:@" " withString:@""] ?: nil;
 }
 - (NSURL *)url
 {
@@ -101,17 +101,17 @@
 
 - (NSString *)serverName
 {
-    return txtfServerName.stringValue ?: nil;
+    return [txtfServerName.stringValue stringByReplacingOccurrencesOfString:@" " withString:@""] ?: nil;
 }
 
 - (NSString *)requestString
 {
-    return txtvRequestInput.string ?: @"";
+    return [txtvRequestInput.string stringByReplacingOccurrencesOfString:@" " withString:@""] ?: @"";
 }
 
 - (NSString *)responseString
 {
-    return txtvResponseOutput.string ?: @"";
+    return [txtvResponseOutput.string stringByReplacingOccurrencesOfString:@" " withString:@""] ?: @"";
 }
 
 - (NSDictionary *)optionsDictionaryWithPrefix:(NSString *)prefix model:(MAXFileEntityModel)model superClass:(NSString *)superClass
@@ -170,7 +170,7 @@
 
 - (void)createEntityWithDictionary:(NSDictionary *)dictionary model:(MAXFileEntityModel)model prefix:(NSString *)prefix superClass:(NSString *)superClass
 {
-    if ([[self serverName] length] > 0 && dictionary)
+    if (dictionary)
     {
         [MAXEntityModelOperation createEntityFileWithDictionary:dictionary
                                                           model:model
@@ -178,11 +178,6 @@
                                                         options:[self optionsDictionaryWithPrefix:prefix model:model superClass:superClass]
                                                           error:nil];
         NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
-        [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
-    }
-    else
-    {
-        NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"请输入服务名(文件名)...", nil];
         [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }
 }
