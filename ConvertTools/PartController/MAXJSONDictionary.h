@@ -1,5 +1,5 @@
 //
-//  MAXJSONDictionaryController.h
+//  MAXJSONDictionary.h
 //  ConvertTools
 //
 //  Created by maxfong on 14-8-28.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MAXJSONDictionaryController : NSObject
+@interface MAXJSONDictionary : NSObject
 
 /**
  *  JSON转换为Dictionary

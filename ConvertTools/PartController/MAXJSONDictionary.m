@@ -1,14 +1,14 @@
 //
-//  MAXJSONDictionaryController.m
+//  MAXJSONDictionary.m
 //  ConvertTools
 //
 //  Created by maxfong on 14-8-28.
 //
 //
 
-#import "MAXJSONDictionaryController.h"
+#import "MAXJSONDictionary.h"
 
-@implementation MAXJSONDictionaryController
+@implementation MAXJSONDictionary
 
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error
 {

@@ -9,8 +9,8 @@
 #import "MAXRequestController.h"
 #import "MAXProtocolEngine.h"
 #import "NSString+UnicodeConvert.h"
-#import "MAXJSONDictionaryController.h"
-#import "MAXEntityOperationController.h"
+#import "MAXJSONDictionary.h"
+#import "MAXEntityModelOperation.h"
 
 @interface MAXRequestController ()
 
@@ -49,13 +49,15 @@
 {
     NSError *error;
     NSString *requestString = [self requestString];
-    NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:requestString error:&error];
+    NSDictionary *dictionary = [MAXJSONDictionary dictionaryWithJSONString:requestString error:&error];
     if (dictionary)
     {
         NSMutableDictionary *requestDictionary = [dictionary[@"request"][@"body"] mutableCopy];
         [requestDictionary removeObjectForKey:@"clientInfo"];
         [self createEntityWithDictionary:requestDictionary
-                                   model:TCTRequestEntity];
+                                   model:MAXHeadAndComplieEntity
+                                  prefix:@"Request"
+                              superClass:@"RequestSuperObj"];
     }
 }
 
@@ -63,17 +65,19 @@
 {
     NSError *error = nil;
     NSString *responseString = [self responseString];
-    NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:responseString error:&error];
+    NSDictionary *dictionary = [MAXJSONDictionary dictionaryWithJSONString:responseString error:&error];
     if (dictionary)
     {
         [self createEntityWithDictionary:dictionary[@"response"][@"body"]
-                                   model:TCTResponseEntity];
+                                   model:MAXHeadAndComplieEntity
+                                  prefix:@"Response"
+                              superClass:@"NSObject"];
     }
 }
 
 - (IBAction)didPressedCreateFileSaveDesktop:sender
 {
-    NSString *string = [NSString stringWithFormat:@"%@\n\n%@\n\n%@", [MAXJSONDictionaryController compressJSONString:[self requestString]], [MAXJSONDictionaryController compressJSONString:[[self url] description]], [MAXJSONDictionaryController compressJSONString:[self responseString]]];
+    NSString *string = [NSString stringWithFormat:@"%@\n\n%@\n\n%@", [MAXJSONDictionary compressJSONString:[self requestString]], [MAXJSONDictionary compressJSONString:[[self url] description]], [MAXJSONDictionary compressJSONString:[self responseString]]];
     
     NSFileManager *manager = [NSFileManager defaultManager];
     NSData *contentData = [string dataUsingEncoding:NSUTF8StringEncoding];
@@ -110,9 +114,12 @@
     return txtvResponseOutput.string ?: @"";
 }
 
-- (NSDictionary *)optionsDictionary
+- (NSDictionary *)optionsDictionaryWithPrefix:(NSString *)prefix model:(MAXFileEntityModel)model superClass:(NSString *)superClass
 {
-    NSString *serverName = [self serverName] ?: @"Test";
+    NSMutableDictionary *dictionary = [@{} mutableCopy];
+
+    [dictionary setValue:prefix ?: @"" forKey:MAXModelFilePrefixKey];
+    [dictionary setValue:[self serverName] ?: @"Test" forKey:MAXModelFileServerNameKey];
     
     NSArray *separateArrar = @[@"leapi/", @"0/", @"8/", @"sbook", @"ation"];
     __block NSString *interface = @"";
@@ -126,9 +133,13 @@
             *stop = YES;
         }
     }];
+    [dictionary setValue:interface forKey:MAXModelFileInterfaceKey];
     
-    return @{TCTModelFileServerNameKey: serverName,
-             TCTModelFileInterfaceKey : interface};
+    if ([[prefix lowercaseString] isEqualToString:@"response"])
+    {
+        [dictionary setValue:@"" forKey:MAXModelFileInitKey];
+    }
+    return dictionary;
 }
 
 - (NSString *)requestStringWithError:(NSError **)error
@@ -143,29 +154,29 @@
     if ([textBox isKindOfClass:[NSTextView class]])
     {
         NSError *error;
-        NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:content error:&error];
+        NSDictionary *dictionary = [MAXJSONDictionary dictionaryWithJSONString:content error:&error];
         if (error)
         {
             [textBox setString:content];
         }
         else
         {
-            [textBox setString:[[MAXJSONDictionaryController stringWithDictionary:dictionary] chineseFromUnicode]];
+            [textBox setString:[[MAXJSONDictionary stringWithDictionary:dictionary] chineseFromUnicode]];
         }
         return YES;
     }
     return NO;
 }
 
-- (void)createEntityWithDictionary:(NSDictionary *)dictionary model:(TCTFileEntityModel)model
+- (void)createEntityWithDictionary:(NSDictionary *)dictionary model:(MAXFileEntityModel)model prefix:(NSString *)prefix superClass:(NSString *)superClass
 {
     if ([[self serverName] length] > 0 && dictionary)
     {
-        [MAXEntityOperationController createEntityFileWithDictionary:dictionary
-                                                               model:model
-                                                           directory:TCTUserDesktopDirectory
-                                                             options:[self optionsDictionary]
-                                                               error:nil];
+        [MAXEntityModelOperation createEntityFileWithDictionary:dictionary
+                                                          model:model
+                                                      directory:MAXUserDesktopDirectory
+                                                        options:[self optionsDictionaryWithPrefix:prefix model:model superClass:superClass]
+                                                          error:nil];
         NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
         [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }

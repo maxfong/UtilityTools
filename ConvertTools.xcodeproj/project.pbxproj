@@ -15,20 +15,18 @@
 		A9362B6A19765A0A00CE1D6C /* PluginController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */; };
 		A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
 		A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
-		A947EF8919C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8519C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model */; };
-		A947EF8A19C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8519C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model */; };
-		A947EF8B19C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8619C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model */; };
-		A947EF8C19C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8619C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model */; };
-		A947EF8D19C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8719C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model */; };
-		A947EF8E19C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8719C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model */; };
-		A947EF8F19C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8819C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model */; };
-		A947EF9019C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8819C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model */; };
-		A947EF9319C542880008E3F2 /* MAXEntityOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A947EF9219C542880008E3F2 /* MAXEntityOperationController.m */; };
-		A947EF9419C542880008E3F2 /* MAXEntityOperationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A947EF9219C542880008E3F2 /* MAXEntityOperationController.m */; };
+		A947EF8919C4A8A20008E3F2 /* MAXEntityFilesModel.h.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8519C4A8A20008E3F2 /* MAXEntityFilesModel.h.model */; };
+		A947EF8A19C4A8A20008E3F2 /* MAXEntityFilesModel.h.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8519C4A8A20008E3F2 /* MAXEntityFilesModel.h.model */; };
+		A947EF8B19C4A8A20008E3F2 /* MAXEntityFilesModel.m.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8619C4A8A20008E3F2 /* MAXEntityFilesModel.m.model */; };
+		A947EF8C19C4A8A20008E3F2 /* MAXEntityFilesModel.m.model in Resources */ = {isa = PBXBuildFile; fileRef = A947EF8619C4A8A20008E3F2 /* MAXEntityFilesModel.m.model */; };
+		A947EF9319C542880008E3F2 /* MAXEntityModelOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A947EF9219C542880008E3F2 /* MAXEntityModelOperation.m */; };
+		A947EF9419C542880008E3F2 /* MAXEntityModelOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A947EF9219C542880008E3F2 /* MAXEntityModelOperation.m */; };
 		A95AEDD319C5902200DAF2B5 /* MAXEntityModelReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = A95AEDD219C5902200DAF2B5 /* MAXEntityModelReplace.m */; };
 		A95AEDD419C5929700DAF2B5 /* MAXEntityModelReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = A95AEDD219C5902200DAF2B5 /* MAXEntityModelReplace.m */; };
 		A970633B19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */; };
 		A970633C19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */; };
+		A98B4F1419C9C63100363C30 /* MAXEntityModelCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = A98B4F1319C9C63100363C30 /* MAXEntityModelCreate.m */; };
+		A98B4F1619C9D39300363C30 /* MAXEntityModelCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = A98B4F1319C9C63100363C30 /* MAXEntityModelCreate.m */; };
 		A98D327819B078A700183824 /* RequestController_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98D327719B078A700183824 /* RequestController_Tests.m */; };
 		A9947A0F1974FE0C0068BDE6 /* MAXConvertTools.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */; };
 		A99D65511974FBBD00DBBCC7 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99D65501974FBBD00DBBCC7 /* AppKit.framework */; };
@@ -36,8 +34,8 @@
 		A99D65591974FBBD00DBBCC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A99D65571974FBBD00DBBCC7 /* InfoPlist.strings */; };
 		A99D655C1974FBBD00DBBCC7 /* MAXConvertTools.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D655B1974FBBD00DBBCC7 /* MAXConvertTools.m */; };
 		A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99D65641974FBE400DBBCC7 /* MAXPluginController.m */; };
-		A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */; };
-		A9A7104719AF26060096D546 /* MAXJSONDictionaryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */; };
+		A9A7104619AF26060096D546 /* MAXJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionary.m */; };
+		A9A7104719AF26060096D546 /* MAXJSONDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A7104519AF26060096D546 /* MAXJSONDictionary.m */; };
 		A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */; };
 		A9E4C42119AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */; };
 /* End PBXBuildFile section */
@@ -62,16 +60,16 @@
 		A9362B61197659CE00CE1D6C /* ConvertTools_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConvertTools_Tests.m; sourceTree = "<group>"; };
 		A9362B63197659CE00CE1D6C /* ConvertTools Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConvertTools Tests-Prefix.pch"; sourceTree = "<group>"; };
 		A9362B6919765A0A00CE1D6C /* PluginController_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginController_Tests.m; sourceTree = "<group>"; };
-		A947EF8519C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TCTEntityFilesRequestModel.h.model; sourceTree = "<group>"; };
-		A947EF8619C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TCTEntityFilesRequestModel.m.model; sourceTree = "<group>"; };
-		A947EF8719C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TCTEntityFilesResponseModel.h.model; sourceTree = "<group>"; };
-		A947EF8819C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TCTEntityFilesResponseModel.m.model; sourceTree = "<group>"; };
-		A947EF9119C542880008E3F2 /* MAXEntityOperationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXEntityOperationController.h; sourceTree = "<group>"; };
-		A947EF9219C542880008E3F2 /* MAXEntityOperationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXEntityOperationController.m; sourceTree = "<group>"; };
+		A947EF8519C4A8A20008E3F2 /* MAXEntityFilesModel.h.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MAXEntityFilesModel.h.model; sourceTree = "<group>"; };
+		A947EF8619C4A8A20008E3F2 /* MAXEntityFilesModel.m.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MAXEntityFilesModel.m.model; sourceTree = "<group>"; };
+		A947EF9119C542880008E3F2 /* MAXEntityModelOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXEntityModelOperation.h; sourceTree = "<group>"; };
+		A947EF9219C542880008E3F2 /* MAXEntityModelOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXEntityModelOperation.m; sourceTree = "<group>"; };
 		A95AEDD119C5902200DAF2B5 /* MAXEntityModelReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXEntityModelReplace.h; sourceTree = "<group>"; };
 		A95AEDD219C5902200DAF2B5 /* MAXEntityModelReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXEntityModelReplace.m; sourceTree = "<group>"; };
 		A970633919B028A500FBF4AB /* MAXProtocolEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXProtocolEngine.h; sourceTree = "<group>"; };
 		A970633A19B028A500FBF4AB /* MAXProtocolEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXProtocolEngine.m; sourceTree = "<group>"; };
+		A98B4F1219C9C63100363C30 /* MAXEntityModelCreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXEntityModelCreate.h; sourceTree = "<group>"; };
+		A98B4F1319C9C63100363C30 /* MAXEntityModelCreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXEntityModelCreate.m; sourceTree = "<group>"; };
 		A98D327719B078A700183824 /* RequestController_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestController_Tests.m; sourceTree = "<group>"; };
 		A9947A0E1974FE0C0068BDE6 /* MAXConvertTools.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAXConvertTools.xib; sourceTree = "<group>"; };
 		A99D654D1974FBBD00DBBCC7 /* UtilityTools.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtilityTools.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,8 +82,8 @@
 		A99D655D1974FBBD00DBBCC7 /* ConvertTools-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConvertTools-Prefix.pch"; sourceTree = "<group>"; };
 		A99D65631974FBE400DBBCC7 /* MAXPluginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXPluginController.h; sourceTree = "<group>"; };
 		A99D65641974FBE400DBBCC7 /* MAXPluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXPluginController.m; sourceTree = "<group>"; };
-		A9A7104419AF26060096D546 /* MAXJSONDictionaryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXJSONDictionaryController.h; sourceTree = "<group>"; };
-		A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXJSONDictionaryController.m; sourceTree = "<group>"; };
+		A9A7104419AF26060096D546 /* MAXJSONDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAXJSONDictionary.h; sourceTree = "<group>"; };
+		A9A7104519AF26060096D546 /* MAXJSONDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAXJSONDictionary.m; sourceTree = "<group>"; };
 		A9E4C41E19AF086600E3E181 /* NSString+UnicodeConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UnicodeConvert.h"; sourceTree = "<group>"; };
 		A9E4C41F19AF086600E3E181 /* NSString+UnicodeConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UnicodeConvert.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,12 +133,12 @@
 		A947EF8419C4A8A20008E3F2 /* TCTEntityModel */ = {
 			isa = PBXGroup;
 			children = (
-				A947EF8519C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model */,
-				A947EF8619C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model */,
-				A947EF8719C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model */,
-				A947EF8819C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model */,
+				A947EF8519C4A8A20008E3F2 /* MAXEntityFilesModel.h.model */,
+				A947EF8619C4A8A20008E3F2 /* MAXEntityFilesModel.m.model */,
 				A95AEDD119C5902200DAF2B5 /* MAXEntityModelReplace.h */,
 				A95AEDD219C5902200DAF2B5 /* MAXEntityModelReplace.m */,
+				A98B4F1219C9C63100363C30 /* MAXEntityModelCreate.h */,
+				A98B4F1319C9C63100363C30 /* MAXEntityModelCreate.m */,
 			);
 			name = TCTEntityModel;
 			path = ../TCTEntityModel;
@@ -216,10 +214,10 @@
 			isa = PBXGroup;
 			children = (
 				A947EF8419C4A8A20008E3F2 /* TCTEntityModel */,
-				A9A7104419AF26060096D546 /* MAXJSONDictionaryController.h */,
-				A9A7104519AF26060096D546 /* MAXJSONDictionaryController.m */,
-				A947EF9119C542880008E3F2 /* MAXEntityOperationController.h */,
-				A947EF9219C542880008E3F2 /* MAXEntityOperationController.m */,
+				A9A7104419AF26060096D546 /* MAXJSONDictionary.h */,
+				A9A7104519AF26060096D546 /* MAXJSONDictionary.m */,
+				A947EF9119C542880008E3F2 /* MAXEntityModelOperation.h */,
+				A947EF9219C542880008E3F2 /* MAXEntityModelOperation.m */,
 			);
 			path = PartController;
 			sourceTree = "<group>";
@@ -308,11 +306,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A947EF8E19C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model in Resources */,
-				A947EF9019C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model in Resources */,
-				A947EF8A19C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model in Resources */,
+				A947EF8A19C4A8A20008E3F2 /* MAXEntityFilesModel.h.model in Resources */,
 				A9362B60197659CE00CE1D6C /* InfoPlist.strings in Resources */,
-				A947EF8C19C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model in Resources */,
+				A947EF8C19C4A8A20008E3F2 /* MAXEntityFilesModel.m.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,12 +316,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A947EF8B19C4A8A20008E3F2 /* TCTEntityFilesRequestModel.m.model in Resources */,
-				A947EF8D19C4A8A20008E3F2 /* TCTEntityFilesResponseModel.h.model in Resources */,
+				A947EF8B19C4A8A20008E3F2 /* MAXEntityFilesModel.m.model in Resources */,
 				A9947A0F1974FE0C0068BDE6 /* MAXConvertTools.xib in Resources */,
-				A947EF8F19C4A8A20008E3F2 /* TCTEntityFilesResponseModel.m.model in Resources */,
 				A99D65591974FBBD00DBBCC7 /* InfoPlist.strings in Resources */,
-				A947EF8919C4A8A20008E3F2 /* TCTEntityFilesRequestModel.h.model in Resources */,
+				A947EF8919C4A8A20008E3F2 /* MAXEntityFilesModel.h.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,11 +330,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98B4F1619C9D39300363C30 /* MAXEntityModelCreate.m in Sources */,
 				A95AEDD419C5929700DAF2B5 /* MAXEntityModelReplace.m in Sources */,
 				A9362B6B1976629700CE1D6C /* MAXConvertTools.m in Sources */,
-				A947EF9419C542880008E3F2 /* MAXEntityOperationController.m in Sources */,
+				A947EF9419C542880008E3F2 /* MAXEntityModelOperation.m in Sources */,
 				A98D327819B078A700183824 /* RequestController_Tests.m in Sources */,
-				A9A7104719AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
+				A9A7104719AF26060096D546 /* MAXJSONDictionary.m in Sources */,
 				A9E4C42119AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
 				A9362B6C1976629700CE1D6C /* MAXPluginController.m in Sources */,
 				A9011C0119B01D630054BD2F /* MAXRequestController.m in Sources */,
@@ -358,10 +353,11 @@
 				A970633B19B028A500FBF4AB /* MAXProtocolEngine.m in Sources */,
 				A95AEDD319C5902200DAF2B5 /* MAXEntityModelReplace.m in Sources */,
 				A99D65661974FBE400DBBCC7 /* MAXPluginController.m in Sources */,
-				A9A7104619AF26060096D546 /* MAXJSONDictionaryController.m in Sources */,
+				A9A7104619AF26060096D546 /* MAXJSONDictionary.m in Sources */,
 				A9011C0019B01D630054BD2F /* MAXRequestController.m in Sources */,
 				A9E4C42019AF086600E3E181 /* NSString+UnicodeConvert.m in Sources */,
-				A947EF9319C542880008E3F2 /* MAXEntityOperationController.m in Sources */,
+				A947EF9319C542880008E3F2 /* MAXEntityModelOperation.m in Sources */,
+				A98B4F1419C9C63100363C30 /* MAXEntityModelCreate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

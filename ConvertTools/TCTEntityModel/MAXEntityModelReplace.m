@@ -7,61 +7,55 @@
 //
 
 #import "MAXEntityModelReplace.h"
+#import "MAXEntityModelCreate.h"
 
-typedef NS_ENUM(NSUInteger, TCTReplicaModel)
+#define k_VARIABLE_ENTITYFILESUPERCLASS      @"NSObject"
+#define k_IMPORTHEADER_ENTITYFILESUPERCLASS  @"#import <Foundation/Foundation.h>"
+
+typedef NS_ENUM(NSUInteger, MAXReplicaModel)
 {
-    ___REQUESTHEADFILENAME___,
-    ___REQUESTCOMPLIEFILENAME___,
-    ___RESPONSEHEADFILENAME___,
-    ___RESPONSECOMPLIEFILENAME___,
+    ___HEADFILENAME___,
+    ___COMPLIEFILENAME___,
     ___PROJECTNAME___,
     ___DATE___,
     ___USERNAME___,
     ___COPYRIGHT___,
-    ___IMPORTHEADER_ENTITYFILEREQUESTSUPERCLASS___,
-    ___IMPORTHEADER_ENTITYFILERESPONSESUPERCLASS___,
-    ___FILEREQUESTNAMEASIDENTIFIER___,
-    ___FILERESPONSENAMEASIDENTIFIER___,
-    ___VARIABLE_ENTITYFILEREQUESTSUPERCLASS___,
-    ___VARIABLE_ENTITYFILERESPONSESUPERCLASS___,
+    ___IMPORTHEADER_ENTITYFILESUPERCLASS___,
+    ___FILENAMEASIDENTIFIER___,
+    ___VARIABLE_ENTITYFILESUPERCLASS___,
     ___IMPORTHEADER_ENTITYFILEREFERENCE___,
-    ___SUBIMPLEMENTATION___,
-    ___REQUESTFILEBASENAME___,
-    ___RESPONSEFILEBASENAME___,
-    ___REQUESTINIT___,
+    ___FILEBASENAME___,
+    ___INIT___,
     ___PROPERTYNAME___
 };
 
 #define replicaModelArray \
 @[\
-@"___REQUESTHEADFILENAME___",\
-@"___REQUESTCOMPLIEFILENAME___",\
-@"___RESPONSEHEADFILENAME___",\
-@"___RESPONSECOMPLIEFILENAME___",\
+@"___HEADFILENAME___",\
+@"___COMPLIEFILENAME___",\
 @"___PROJECTNAME___",\
 @"___DATE___",\
 @"___USERNAME___",\
 @"___COPYRIGHT___",\
-@"___IMPORTHEADER_ENTITYFILEREQUESTSUPERCLASS___",\
-@"___IMPORTHEADER_ENTITYFILERESPONSESUPERCLASS___",\
-@"___FILEREQUESTNAMEASIDENTIFIER___",\
-@"___FILERESPONSENAMEASIDENTIFIER___",\
-@"___VARIABLE_ENTITYFILEREQUESTSUPERCLASS___",\
-@"___VARIABLE_ENTITYFILERESPONSESUPERCLASS___",\
+@"___IMPORTHEADER_ENTITYFILESUPERCLASS___",\
+@"___FILENAMEASIDENTIFIER___",\
+@"___VARIABLE_ENTITYFILESUPERCLASS___",\
 @"___IMPORTHEADER_ENTITYFILEREFERENCE___",\
-@"___SUBIMPLEMENTATION___",\
-@"___REQUESTFILEBASENAME___",\
-@"___RESPONSEFILEBASENAME___",\
-@"___REQUESTINIT___",\
+@"___FILEBASENAME___",\
+@"___INIT___",\
 @"___PROPERTYNAME___"\
 ];
 
-NSString *const TCTModelFileServerNameKey = @"serverName";
-NSString *const TCTModelFileInterfaceKey = @"interface";
+NSString *const MAXModelFileServerNameKey = @"MAXServerName";
+NSString *const MAXModelFileInterfaceKey = @"MAXInterface";
+NSString *const MAXModelFilePrefixKey = @"MAXPrefix";
+NSString *const MAXModelFileSuperClassKey = @"MAXSuperClass";
+NSString *const MAXModelFileImportKey = @"MAXImport";
+NSString *const MAXModelFileInitKey = @"MAXInit";
 
 @implementation MAXEntityModelReplace
 
-+ (NSString *)replaceStringWithString:(NSString *)string object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options
++ (NSString *)replaceStringWithString:(NSString *)string object:(NSDictionary *)dictionary fileModel:(MAXFileEntityModel)fileModel options:(NSDictionary *)options
 {
     __block NSString *originString = [string copy];
     NSArray *replaceModels = replicaModelArray;
@@ -74,34 +68,24 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
     return originString;
 }
 
-+ (NSString *)replaceStringWithKey:(NSString *)key object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options
++ (NSString *)replaceStringWithKey:(NSString *)key object:(NSDictionary *)dictionary fileModel:(MAXFileEntityModel)fileModel options:(NSDictionary *)options
 {
     NSArray *replaceModels = replicaModelArray;
     return [self replaceStringWithModel:[replaceModels indexOfObject:key] object:dictionary fileModel:fileModel options:options];
 }
 
-+ (NSString *)replaceStringWithModel:(TCTReplicaModel)model object:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel options:(NSDictionary *)options
++ (NSString *)replaceStringWithModel:(MAXReplicaModel)model object:(NSDictionary *)dictionary fileModel:(MAXFileEntityModel)fileModel options:(NSDictionary *)options
 {
     switch (model)
     {
-        case ___REQUESTHEADFILENAME___:
+        case ___HEADFILENAME___:
         {
-            return [NSString stringWithFormat:@"Request%@.h", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
+            return [NSString stringWithFormat:@"%@%@.h", [options[MAXModelFilePrefixKey] capitalizedString] ?: @"", [options[MAXModelFileServerNameKey] capitalizedString] ?: @"<#serverName#>"];
         }
             break;
-        case ___REQUESTCOMPLIEFILENAME___:
+        case ___COMPLIEFILENAME___:
         {
-            return [NSString stringWithFormat:@"Request%@.m", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
-        }
-            break;
-        case ___RESPONSEHEADFILENAME___:
-        {
-            return [NSString stringWithFormat:@"Response%@.h", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
-        }
-            break;
-        case ___RESPONSECOMPLIEFILENAME___:
-        {
-            return [NSString stringWithFormat:@"Response%@.m", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
+            return [NSString stringWithFormat:@"%@%@.m", [options[MAXModelFilePrefixKey] capitalizedString] ?: @"", [options[MAXModelFileServerNameKey] capitalizedString] ?: @"<#serverName#>"];
         }
             break;
         case ___PROJECTNAME___:
@@ -127,64 +111,43 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
             return @"";
         }
             break;
-        case ___IMPORTHEADER_ENTITYFILEREQUESTSUPERCLASS___:
+        case ___IMPORTHEADER_ENTITYFILESUPERCLASS___:
         {
-            return @"#import \"RequestSuperObj.h\"";
+            return options[MAXModelFileImportKey] ?: options[MAXModelFileSuperClassKey] ? [NSString stringWithFormat:@"#import \"%@.h\"", options[MAXModelFileSuperClassKey]] : k_IMPORTHEADER_ENTITYFILESUPERCLASS;
         }
             break;
-        case ___IMPORTHEADER_ENTITYFILERESPONSESUPERCLASS___:
+        case ___FILENAMEASIDENTIFIER___:
         {
-            return @"#import <Foundation/Foundation.h>";
+            return [NSString stringWithFormat:@"%@%@", options[MAXModelFilePrefixKey] ?: @"", options[MAXModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
-        case ___FILEREQUESTNAMEASIDENTIFIER___:
+        case ___VARIABLE_ENTITYFILESUPERCLASS___:
         {
-            return [NSString stringWithFormat:@"Request%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
+            return options[MAXModelFileSuperClassKey] ?: k_VARIABLE_ENTITYFILESUPERCLASS;
         }
             break;
-        case ___FILERESPONSENAMEASIDENTIFIER___:
+        case ___FILEBASENAME___:
         {
-            return [NSString stringWithFormat:@"Response%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
+            return [NSString stringWithFormat:@"%@%@", options[MAXModelFilePrefixKey] ?: @"", options[MAXModelFileServerNameKey] ?: @"<#serverName#>"];
         }
             break;
-        case ___VARIABLE_ENTITYFILEREQUESTSUPERCLASS___:
+        case ___INIT___:
         {
-            return @"RequestSuperObj";
-        }
-            break;
-        case ___VARIABLE_ENTITYFILERESPONSESUPERCLASS___:
-        {
-            return @"NSObject";
-        }
-            break;
-        case ___REQUESTFILEBASENAME___:
-        {
-            return [NSString stringWithFormat:@"Request%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
-        }
-            break;
-        case ___RESPONSEFILEBASENAME___:
-        {
-            return [NSString stringWithFormat:@"Response%@", options[TCTModelFileServerNameKey] ?: @"<#serverName#>"];
-        }
-            break;
-        case ___REQUESTINIT___:
-        {
-            NSString *serverName = ([options[TCTModelFileServerNameKey] length] > 0) ? options[TCTModelFileServerNameKey] : nil;
-            NSString *interface = ([options[TCTModelFileInterfaceKey] length] > 0) ? [options[TCTModelFileInterfaceKey] lowercaseString] : nil;
-            return [NSString stringWithFormat:@"- (id)init\n\
-{\n\
+            NSString *serverName = ([options[MAXModelFileServerNameKey] length] > 0) ? options[MAXModelFileServerNameKey] : nil;
+            NSString *interface = ([options[MAXModelFileInterfaceKey] length] > 0) ? [options[MAXModelFileInterfaceKey] lowercaseString] : nil;
+            //FIXME!!! Logic Maybe Change
+            return options[MAXModelFileInitKey] ?: [NSString stringWithFormat:@"- (id)init\n{\n\
     if (self = [super init])\n\
     {\n\
         [self setInterfaceURL:@\"/%@\" Type:outer_4_Domain];\n\
         self.serviceName = @\"%@\";\n\
     }\n\
-    return self;\n}", interface ?:@"<#interface#>", serverName ?: @"<#serverName#>"];
+    return self;\n}\n", interface ?:@"<#interface#>", serverName ?: @"<#serverName#>"];
         }
             break;
         case ___IMPORTHEADER_ENTITYFILEREFERENCE___:
-        case ___SUBIMPLEMENTATION___:
         {
-            return [self refereceStringWithDictionary:dictionary fileModel:fileModel];
+            return [self importWithDictionary:dictionary fileModel:fileModel options:options];
         }
             break;
         case ___PROPERTYNAME___:
@@ -207,7 +170,7 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
              propertyString = [self propertyStringWithArrayName:key];
          }
          else if ([obj isKindOfClass:[NSDictionary class]])
-         {propertyString = [self propertyStringWithStringName:key];
+         {
              propertyString = [self propertyStringWithDictionaryName:key];
          }
          else
@@ -232,111 +195,50 @@ NSString *const TCTModelFileInterfaceKey = @"interface";
     return [NSString stringWithFormat:@"@property (nonatomic, retain) %@ *%@;\n", propertyName, propertyName];
 }
 
-+ (NSString *)objectStringWithDictionary:(NSDictionary *)dictionary className:(NSString *)className fileModel:(TCTFileEntityModel)fileModel
++ (NSString *)importStringsWithDictionary:(NSDictionary *)dictionary className:(NSString *)className fileModel:(MAXFileEntityModel)fileModel options:(NSDictionary *)options
 {
-    __block NSMutableString *objectString = [NSMutableString string];
-    if ([dictionary isKindOfClass:[NSDictionary class]])
+    __block NSMutableString *objectString = [[NSString stringWithFormat:@"\n#import \"%@.h\"", [className capitalizedString]] mutableCopy];
     {
-        switch (fileModel)
-        {
-            case TCTRequestHeadEntity:
-            case TCTResponseHeadEntity:
-            {
-                [objectString appendString:[NSString stringWithFormat:@"\n@interface %@ : NSObject\n\n", className]];
-                
-                NSString *propertyString = [self propertyStringsWithDictionary:dictionary];
-                [objectString appendString:propertyString];
-                
-                [objectString appendString:@"\n@end\n"];
-            }
-                break;
-            case TCTRequestComplieEntity:
-            case TCTResponseComplieEntity:
-            {
-                [objectString appendString:[NSString stringWithFormat:@"\n@implementation %@\n\n", className]];
-                [objectString appendString:@"\n@end\n"];
-            }
-            default:
-                break;
-        }
+        NSDictionary *subClassOptions = @{MAXModelFileServerNameKey : className,
+                                          MAXModelFileInitKey : @""};
+        NSData *contentData = [MAXEntityModelCreate contentWithModel:fileModel originalData:dictionary options:subClassOptions];
+        NSString *filePath = [MAXEntityModelCreate filePathWithModel:fileModel options:subClassOptions];
+        
+        [MAXEntityModelCreate createFileAtPath:filePath contentData:contentData attributes:nil];
     }
-    return objectString;
-}
-
-+ (NSString *)subObjectStringWithDictionary:(NSDictionary *)dictionary className:(NSString *)className fileModel:(TCTFileEntityModel)fileModel
-{
-    __block NSMutableString *objectString = [[self objectStringWithDictionary:dictionary className:className fileModel:fileModel] mutableCopy];
-    
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-    {
-        if ([obj isKindOfClass:[NSArray class]])
-        {
-            [objectString appendString:[self subObjectStringWithDictionary:obj[0] className:key fileModel:fileModel]];
-        }
-        else if ([obj isKindOfClass:[NSDictionary class]])
-        {
-            [objectString appendString:[self subObjectStringWithDictionary:obj className:key fileModel:fileModel]];
-        }
-        else
-        {
-        }
-    }];
-    return objectString;
-}
-
-+ (NSString *)objectComplieStringWithDictionary:(NSDictionary *)dictionary className:(NSString *)className
-{
-    __block NSMutableString *objectString = [NSMutableString string];
-    if ([dictionary isKindOfClass:[NSDictionary class]])
-    {
-        [objectString appendString:[NSString stringWithFormat:@"\n@implementation  %@\n", className]];
-        [objectString appendString:@"\n@end"];
-    }
-    return objectString;
-}
-+ (NSString *)subObjectComplieStringWithDictionary:(NSDictionary *)dictionary className:(NSString *)className
-{
-    __block NSMutableString *objectString = [[self objectComplieStringWithDictionary:dictionary className:className] mutableCopy];
     
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
      {
-         if ([obj isKindOfClass:[NSArray class]])
+         if ([obj isKindOfClass:[NSArray class]] && [obj count] > 0)
          {
-             [objectString appendString:[self subObjectComplieStringWithDictionary:obj[0] className:key]];
+             [objectString appendString:[self importStringsWithDictionary:obj[0] className:key fileModel:fileModel options:options]];
          }
          else if ([obj isKindOfClass:[NSDictionary class]])
          {
-             [objectString appendString:[self subObjectComplieStringWithDictionary:obj className:key]];
-         }
-         else
-         {
+             [objectString appendString:[self importStringsWithDictionary:obj className:key fileModel:fileModel options:options]];
          }
      }];
     return objectString;
 }
 
-+ (NSString *)refereceStringWithDictionary:(NSDictionary *)dictionary fileModel:(TCTFileEntityModel)fileModel
++ (NSString *)importWithDictionary:(NSDictionary *)dictionary fileModel:(MAXFileEntityModel)fileModel options:(NSDictionary *)options
 {
     __block NSMutableString *objectString = [NSMutableString string];
-    [objectString appendString:@"\n"];
-    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
-    {
-        if ([obj isKindOfClass:[NSArray class]])
-        {
-            if ([obj[0] isKindOfClass:[NSDictionary class]])
-            {
-                [objectString appendString:[self subObjectStringWithDictionary:obj[0] className:key fileModel:fileModel]];
-            }
-        }
-        else if ([obj isKindOfClass:[NSDictionary class]])
-        {
-            [objectString appendString:[self subObjectStringWithDictionary:obj className:key fileModel:fileModel]];
-        }
-        else
-        {
-        }
-    }];
     
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+     {
+         if ([obj isKindOfClass:[NSArray class]] && [obj count] > 0)
+         {
+             if ([obj[0] isKindOfClass:[NSDictionary class]])
+             {
+                 [objectString appendString:[self importStringsWithDictionary:obj[0] className:key fileModel:fileModel options:options]];
+             }
+         }
+         else if ([obj isKindOfClass:[NSDictionary class]])
+         {
+             [objectString appendString:[self importStringsWithDictionary:obj className:key fileModel:fileModel options:options]];
+         }
+     }];
     return objectString;
 }
 

@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "MAXProtocolEngine.h"
-#import "MAXEntityOperationController.h"
-#import "MAXJSONDictionaryController.h"
+#import "MAXEntityModelOperation.h"
+#import "MAXJSONDictionary.h"
 #import "MAXRequestController.h"
 
 @interface RequestController_Tests : XCTestCase
@@ -68,14 +68,17 @@
     NSString *json = @"{\"cityName\":\"a\",\"cityId\":\"b\",\"sceneryList\":{\"test\":\"a\",\"sceneryList1\":{\"test1\":\"a\"}},\"hotelList\":[{\"test3\":\"123\"}]}";
 
     NSError *error = nil;
-    NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:&error];
+    NSDictionary *dic = [MAXJSONDictionary dictionaryWithJSONString:json error:&error];
     
-    [MAXEntityOperationController createEntityFileWithDictionary:dic
-                                                           model:TCTRequestEntity
-                                                       directory:TCTUserDesktopDirectory
-                                                         options:@{TCTModelFileServerNameKey: @"GetList", TCTModelFileInterfaceKey
-                                                                   : @""}
-                                                           error:nil];
+    [MAXEntityModelOperation createEntityFileWithDictionary:dic
+                                                      model:MAXHeadAndComplieEntity
+                                                  directory:MAXUserDesktopDirectory
+                                                    options:@{MAXModelFileServerNameKey : @"GetList",
+                                                              MAXModelFileInterfaceKey : @"",
+                                                              MAXModelFileSuperClassKey : @"test",
+                                                              MAXModelFilePrefixKey : @"Response",
+                                                              MAXModelFileInitKey : @""}
+                                                      error:nil];
 }
 
 - (void)testCreateRequestFile

@@ -1,5 +1,5 @@
 //
-//  ___RESPONSECOMPLIEFILENAME___
+//  ___COMPLIEFILENAME___
 //  ___PROJECTNAME___
 //
 //  Auto Created by maxfong's UtilityTools on ___DATE___.
@@ -7,8 +7,9 @@
 //  ___COPYRIGHT___
 //
 
-#import "___RESPONSEFILEBASENAME___.h" ___SUBIMPLEMENTATION___
+#import "___FILEBASENAME___.h"
 
-@implementation ___FILERESPONSENAMEASIDENTIFIER___
+@implementation ___FILENAMEASIDENTIFIER___
 
+___INIT___
 @end

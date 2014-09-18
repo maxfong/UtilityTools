@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MAXPluginController.h"
-#import "MAXJSONDictionaryController.h"
+#import "MAXJSONDictionary.h"
 
 @interface PluginController_Tests : XCTestCase
 
@@ -41,9 +41,9 @@
     NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\",\"b\":\"b\",\"c\":\"c\"}}";
     
     NSError *error = nil;
-    [MAXJSONDictionaryController validityJSONString:json error:&error];
+    [MAXJSONDictionary validityJSONString:json error:&error];
     
-    NSString * errMsg = [MAXJSONDictionaryController JSONSpecificFromError:error originString:json];
+    NSString * errMsg = [MAXJSONDictionary JSONSpecificFromError:error originString:json];
     NSLog(@"%@", errMsg);
     
     NSAssert(!error, error.description);
@@ -54,13 +54,13 @@
     NSString *json = @"{\"a\":\"a\",\"b\":\"b\",\"c\":{\"a\":\"a\",\"b\":\"b\",\"c\":\"c\"}}";
     
     NSError *error = nil;
-    NSDictionary *dic = [MAXJSONDictionaryController dictionaryWithJSONString:json error:&error];
+    NSDictionary *dic = [MAXJSONDictionary dictionaryWithJSONString:json error:&error];
     
-    NSString *string = [MAXJSONDictionaryController stringWithDictionary:dic];
+    NSString *string = [MAXJSONDictionary stringWithDictionary:dic];
     
-    NSString *string1 = [MAXJSONDictionaryController compressJSONString:string];
+    NSString *string1 = [MAXJSONDictionary compressJSONString:string];
     
-    NSDictionary *dic1 = [MAXJSONDictionaryController dictionaryWithJSONString:string1 error:&error];
+    NSDictionary *dic1 = [MAXJSONDictionary dictionaryWithJSONString:string1 error:&error];
     NSLog(@"%@", dic1);
     
     NSLog(@"%@", string);

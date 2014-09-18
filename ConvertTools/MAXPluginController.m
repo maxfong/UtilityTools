@@ -8,8 +8,8 @@
 
 #import "MAXPluginController.h"
 #import "NSString+UnicodeConvert.h"
-#import "MAXJSONDictionaryController.h"
-#import "MAXEntityOperationController.h"
+#import "MAXJSONDictionary.h"
+#import "MAXEntityModelOperation.h"
 
 @implementation MAXPluginController
 
@@ -36,16 +36,16 @@
     NSString *outputString = txtvConsole.string ?: @"";
     
     NSError *error = nil;
-    BOOL validity = [MAXJSONDictionaryController validityJSONString:outputString error:&error];
+    BOOL validity = [MAXJSONDictionary validityJSONString:outputString error:&error];
     if (validity)
     {
-        NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:outputString error:nil];
-        [txtvConsole setString:[[MAXJSONDictionaryController stringWithDictionary:dictionary] chineseFromUnicode]];
+        NSDictionary *dictionary = [MAXJSONDictionary dictionaryWithJSONString:outputString error:nil];
+        [txtvConsole setString:[[MAXJSONDictionary stringWithDictionary:dictionary] chineseFromUnicode]];
     }
     else
     {
-        NSString *errorMsg = [MAXJSONDictionaryController JSONSpecificFromError:error originString:outputString];
-        NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionaryController JSONDescriptionWithError:error], errorMsg];
+        NSString *errorMsg = [MAXJSONDictionary JSONSpecificFromError:error originString:outputString];
+        NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionary JSONDescriptionWithError:error], errorMsg];
         NSString *messageText = @"验证 JSON 时出现错误";
         
         NSAlert *alert = [NSAlert alertWithMessageText:messageText defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:message, nil];
@@ -57,14 +57,14 @@
 {
     NSString *outputString = txtvConsole.string ?: @"";
     NSError *error;
-    NSDictionary *dictionary = [MAXJSONDictionaryController dictionaryWithJSONString:outputString error:&error];
+    NSDictionary *dictionary = [MAXJSONDictionary dictionaryWithJSONString:outputString error:&error];
     if (dictionary)
     {
-        [MAXEntityOperationController createEntityFileWithDictionary:dictionary
-                                                               model:TCTResponseEntity
-                                                           directory:TCTUserDesktopDirectory
-                                                             options:@{TCTModelFileServerNameKey : @"Test"}
-                                                               error:nil];
+        [MAXEntityModelOperation createEntityFileWithDictionary:dictionary
+                                                          model:MAXHeadAndComplieEntity
+                                                      directory:MAXUserDesktopDirectory
+                                                        options:@{MAXModelFileServerNameKey : @"Test"}
+                                                          error:nil];
         NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
         [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
     }
