@@ -27,10 +27,17 @@
 
 - (IBAction)didPressedAlert:sender
 {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"更多想法请联系maxfong"];
-    [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+    NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:@"确定" alternateButton:@"取消" otherButton:nil informativeTextWithFormat:@"更多想法请联系maxfong，是否访问项目github？"];
+    [alert beginSheetModalForWindow:nil modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
 
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    if (returnCode == 1)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/maxfong/UtilityTools"]];
+    }
+}
 - (IBAction)didPressedCheckJSON:sender
 {
     NSString *outputString = txtvConsole.string ?: @"";

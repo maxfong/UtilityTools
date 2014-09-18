@@ -50,7 +50,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="6GK-jY-0Rj"/>
-                <menuItem title="About" id="KCI-5s-rR1">
+                <menuItem title="关于" id="KCI-5s-rR1">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="didPressedAlert:" target="YLy-65-1bz" id="cSn-i0-lhf"/>
