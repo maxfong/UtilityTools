@@ -119,7 +119,7 @@
     NSMutableDictionary *dictionary = [@{} mutableCopy];
 
     [dictionary setValue:prefix ?: @"" forKey:MAXModelFilePrefixKey];
-    [dictionary setValue:[self serverName] ?: @"Test" forKey:MAXModelFileServerNameKey];
+    [dictionary setValue:[self serverName] ?: @"MAXTDemo" forKey:MAXModelFileServerNameKey];
     
     NSArray *separateArrar = @[@"leapi/", @"0/", @"8/", @"sbook", @"ation"];
     __block NSString *interface = @"";

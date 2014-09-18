@@ -66,7 +66,7 @@
         [MAXEntityModelOperation createEntityFileWithDictionary:dictionary
                                                           model:MAXHeadAndComplieEntity
                                                       directory:MAXUserDesktopDirectory
-                                                        options:@{MAXModelFileServerNameKey : @"Test"}
+                                                        options:@{MAXModelFileServerNameKey : @"MAXTDemo"}
                                                           error:nil];
         NSAlert *alert = [NSAlert alertWithMessageText:@"提示" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@"生成成功！", nil];
         [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];

@@ -75,7 +75,7 @@
                                                   directory:MAXUserDesktopDirectory
                                                     options:@{MAXModelFileServerNameKey : @"GetList",
                                                               MAXModelFileInterfaceKey : @"",
-                                                              MAXModelFileSuperClassKey : @"test",
+                                                              MAXModelFileSuperClassKey : @"MAXTDemo",
                                                               MAXModelFilePrefixKey : @"Response",
                                                               MAXModelFileInitKey : @""}
                                                       error:nil];
