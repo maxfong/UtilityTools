@@ -15,26 +15,22 @@
     BOOL created = [MAXEntityModelCreate createDirectory:directory error:error];
     if (created)
     {
+        NSData *contentData = nil;
+        NSString *filePath = nil;
         if (model == MAXHeadAndComplieEntity)
         {
-            {
-                NSData *contentData = [MAXEntityModelCreate contentWithModel:MAXHeadEntity originalData:dictionary options:options];
-                NSString *filePath = [MAXEntityModelCreate filePathWithModel:MAXHeadEntity options:options];
-                
-                [MAXEntityModelCreate createFileAtPath:filePath contentData:contentData attributes:nil];
-            }
-            {
-                NSData *contentData = [MAXEntityModelCreate contentWithModel:MAXComplieEntity originalData:dictionary options:options];
-                NSString *filePath = [MAXEntityModelCreate filePathWithModel:MAXComplieEntity options:options];
-                
-                [MAXEntityModelCreate createFileAtPath:filePath contentData:contentData attributes:nil];
-            }
+            contentData = [MAXEntityModelCreate contentWithModel:MAXHeadEntity originalData:dictionary options:options];
+            filePath = [MAXEntityModelCreate filePathWithModel:MAXHeadEntity options:options];
+            [MAXEntityModelCreate createFileAtPath:filePath contentData:contentData attributes:nil];
+            
+            contentData = [MAXEntityModelCreate contentWithModel:MAXComplieEntity originalData:dictionary options:options];
+            filePath = [MAXEntityModelCreate filePathWithModel:MAXComplieEntity options:options];
+            [MAXEntityModelCreate createFileAtPath:filePath contentData:contentData attributes:nil];
         }
         else
         {
-            NSData *contentData = [MAXEntityModelCreate contentWithModel:model originalData:dictionary options:options];
-            NSString *filePath = [MAXEntityModelCreate filePathWithModel:model options:options];
-            
+            contentData = [MAXEntityModelCreate contentWithModel:model originalData:dictionary options:options];
+            filePath = [MAXEntityModelCreate filePathWithModel:model options:options];
             [MAXEntityModelCreate createFileAtPath:filePath contentData:contentData attributes:nil];
         }
     }

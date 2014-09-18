@@ -15,8 +15,6 @@ FOUNDATION_EXPORT NSString *const MAXModelFileSuperClassKey;    // NSString
 FOUNDATION_EXPORT NSString *const MAXModelFileImportKey;        // NSString
 FOUNDATION_EXPORT NSString *const MAXModelFileInitKey;        // NSString
 
-
-
 typedef NS_ENUM(NSUInteger, MAXFileEntityModel)
 {
     MAXUnknownEntity,
