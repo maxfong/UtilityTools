@@ -11,11 +11,13 @@
 
 @implementation MAXProtocolEngine
 
-+ (NSString *)postRequestWithURL:(NSURL *)url JSONString:(NSString *)JSONString error:(NSError **)error
++ (void)postRequestWithURL:(NSURL *)url JSONString:(NSString *)JSONString completionHandler:(void (^)(NSString *, NSError*)) handler
 {
-    BOOL validity = [self validityJSONString:JSONString error:error];
-    if (!validity) {
-        return nil;
+    NSError *error;
+    BOOL validity = [self validityJSONString:JSONString error:&error];
+    if (!validity)
+    {
+        handler (nil, error);
     }
     
     NSData *HTTPBody = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
@@ -25,10 +27,12 @@
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:HTTPBody];
     
-    NSURLResponse *response;
-    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:error];
-    
-    return (responseData ? [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] : nil);
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *respone, NSData *data, NSError *error)
+    {
+        NSString *responseString = data ? [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] : nil;
+        handler(responseString, error);
+    }];
 }
 
 + (BOOL)validityJSONString:(NSString *)JSONString error:(NSError **)error
