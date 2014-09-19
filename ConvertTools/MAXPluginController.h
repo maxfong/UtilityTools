@@ -13,6 +13,7 @@
     IBOutlet NSTextView     *txtvJSONInput;
     IBOutlet NSTextView     *txtvJSONOutput;
     IBOutlet NSTextView     *txtvConsole;
+    IBOutlet NSTextField    *txtfConsole;
 }
 
 - (IBAction)didPressedConvertChinese:sender;    //Unicode转换
