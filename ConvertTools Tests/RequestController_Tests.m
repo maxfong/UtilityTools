@@ -40,27 +40,25 @@
 
 - (void)testRequest
 {
-    NSError *error = nil;
     NSURL *url = [NSURL URLWithString:@""];
     NSString *jsonString = @"";
     
-    NSString *responseString = [MAXProtocolEngine postRequestWithURL:url JSONString:jsonString error:&error];
-    
-    if (responseString)
-    {
-        NSLog(@"%@", responseString);
-    }
-    else
-    {
-//        error
-        
-    }
-    
+    [MAXProtocolEngine postRequestWithURL:url JSONString:jsonString completionHandler:^(NSString *responseString, NSError *error)
+     {
+         if (responseString)
+         {
+             NSLog(@"%@", responseString);
+         }
+         else
+         {
+             //        error
+         }
+    }];
 }
 
 - (void)testPostRequestWithURL
 {
-    [MAXProtocolEngine postRequestWithURL:nil JSONString:@"{}" error:nil];
+    [MAXProtocolEngine postRequestWithURL:nil JSONString:@"{}" completionHandler:nil];
 }
 
 - (void)testFileManager
@@ -83,7 +81,7 @@
 
 - (void)testCreateRequestFile
 {
-    [self.controller didPressedCreateRequestFile:nil];
+    [self.controller didPressedSubmitRequest:nil];
 }
 
 @end

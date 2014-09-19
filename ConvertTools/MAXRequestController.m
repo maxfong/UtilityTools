@@ -22,17 +22,19 @@
 #pragma mark - IBAction
 - (IBAction)didPressedSubmitRequest:sender
 {
-    NSError *error;
-    NSString *requestString = [self requestStringWithError:&error];
-    
-    if ([requestString length] > 0)
-    {
-        [self formatterWithTextbox:txtvResponseOutput content:requestString];
-    }
-    else
-    {
-        [txtvResponseOutput setString:[error description]];
-    }
+    [MAXProtocolEngine postRequestWithURL:[self url]
+                               JSONString:[self requestString]
+                        completionHandler:^(NSString *responseString, NSError *error)
+     {
+         if ([responseString length] > 0)
+         {
+             [self formatterWithTextbox:txtvResponseOutput content:responseString];
+         }
+         else
+         {
+             [txtvResponseOutput setString: error ? [error description] : @"未知错误"];
+         }
+    }];
 }
 
 - (IBAction)didPressedFormatterRequest:sender
@@ -140,13 +142,6 @@
         [dictionary setValue:@"" forKey:MAXModelFileInitKey];
     }
     return dictionary;
-}
-
-- (NSString *)requestStringWithError:(NSError **)error
-{
-    return [MAXProtocolEngine postRequestWithURL:[self url]
-                                      JSONString:[self requestString]
-                                           error:error] ?: @"";
 }
 
 - (BOOL)formatterWithTextbox:(id)textBox content:(NSString *)content

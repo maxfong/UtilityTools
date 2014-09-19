@@ -12,6 +12,11 @@
 
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error
 {
+    BOOL hasIntValue = [self validityIntValueWithJSONString:jsonString error:error];
+    if (hasIntValue)
+    {
+        return nil;
+    }
     NSString *replaceString = [self compressJSONString:jsonString];
     NSData *JSONData = [replaceString dataUsingEncoding:NSUnicodeStringEncoding];
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:JSONData
@@ -32,8 +37,30 @@
 
 + (BOOL)validityJSONString:(NSString *)jsonString error:(NSError **)error
 {
+    BOOL hasIntValue = [self validityIntValueWithJSONString:jsonString error:error];
+    if (hasIntValue)
+    {
+        return NO;
+    }
     NSDictionary *dictionary = [self dictionaryWithJSONString:jsonString error:error];
     return (dictionary ? YES : NO);
+}
+
++ (BOOL)validityIntValueWithJSONString:(NSString *)jsonString error:(NSError **)error
+{
+    NSString *regex = @"\"\\s?:\\s?[0-9]";
+    NSRange regexRange = [jsonString rangeOfString:regex options:NSRegularExpressionSearch];
+    if (regexRange.location != NSNotFound)
+    {
+        NSString *description = [NSString stringWithFormat:@"No value for key in object around character %lu.", (unsigned long)regexRange.location];
+        if (error)
+        {
+            *error = [NSError errorWithDomain:@"" code:0 userInfo:@{@"NSDebugDescription": description}];
+        }
+        
+        return YES;
+    }
+    return NO;
 }
 
 + (NSString *)JSONDescriptionWithError:(NSError *)error
@@ -43,29 +70,56 @@
 
 + (NSString *)JSONSpecificFromError:(NSError *)error originString:(NSString *)originString
 {
-    if (error && [originString length] > 0)
+    NSError *err = nil;
+    NSString *JSONString = [self compressJSONString:originString];
+    if (error)
     {
-        NSString *string = [self JSONDescriptionWithError:error];
+        err = error;
+    }
+    else
+    {
+        [self dictionaryWithJSONString:JSONString error:&err];
+    }
+    if (err)
+    {
+        NSString *string = [self JSONDescriptionWithError:err];
         NSArray *array = [string componentsSeparatedByString:@" "];
         if ([array count] > 0)
         {
             NSString *s = [[array lastObject] substringToIndex:[[array lastObject] length] - 1];
             
-            NSUInteger maxCount = [originString length];
-            NSUInteger location = [s intValue];
-            
-            NSUInteger length = 10;
-            while (length + location > maxCount)
+            if ([s intValue] > 0)
             {
-                length -= 1;
+                NSInteger maxCount = [JSONString length];
+                NSInteger errLocation = [s intValue];
+                
+                NSInteger maxLength = 20;
+                while (maxLength + errLocation > maxCount)
+                {
+                    maxLength -= 1;
+                }
+                
+                NSInteger mixLocation = errLocation - 20;
+                while (mixLocation <= 0)
+                {
+                    mixLocation += 1;
+                }
+                
+                NSRange range = NSMakeRange(mixLocation, ((errLocation - mixLocation) + maxLength));
+                NSMutableString *message = [[JSONString substringWithRange:range] mutableCopy];
+                
+                [message appendString:@"\n"];
+                for (int i = 0; i < (errLocation - mixLocation+3); i++)
+                {
+                    [message appendString:@" "];
+                }
+                [message appendString:@"^"];
+                return message;
             }
-            
-            NSRange range = NSMakeRange(location, length);
-            NSRange ran = NSMakeRange([s intValue], 1);
-            
-            NSString *message = [originString substringWithRange:range];
-            NSString *errorMsg = [originString substringWithRange:ran];
-            return [NSString stringWithFormat:@"%@->%@", message, errorMsg];
+            else
+            {
+                return string;
+            }
         }
     }
     return nil;

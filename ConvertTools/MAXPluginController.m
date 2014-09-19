@@ -38,12 +38,12 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/maxfong/UtilityTools"]];
     }
 }
+
 - (IBAction)didPressedCheckJSON:sender
 {
     NSString *outputString = txtvConsole.string ?: @"";
     
-    NSError *error = nil;
-    BOOL validity = [MAXJSONDictionary validityJSONString:outputString error:&error];
+    BOOL validity = [MAXJSONDictionary validityJSONString:outputString error:nil];
     if (validity)
     {
         NSDictionary *dictionary = [MAXJSONDictionary dictionaryWithJSONString:outputString error:nil];
@@ -51,16 +51,14 @@
     }
     else
     {
-        NSString *errorMsg = [MAXJSONDictionary JSONSpecificFromError:error originString:outputString];
+        NSString *errorMsg = [MAXJSONDictionary JSONSpecificFromError:nil originString:outputString];
         if ([errorMsg length] > 0)
         {
-            NSString *message = [NSString stringWithFormat:@"%@\n具体错误在：%@", [MAXJSONDictionary JSONDescriptionWithError:error], errorMsg];
-            NSString *messageText = @"验证 JSON 时出现错误";
-            
-            NSAlert *alert = [NSAlert alertWithMessageText:messageText defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:message, nil];
-            [alert beginSheetModalForWindow:nil modalDelegate:nil didEndSelector:nil contextInfo:nil];
+            [txtfConsole setStringValue:errorMsg];
+            return;
         }
     }
+    [txtfConsole setStringValue:@"验证通过"];
 }
 
 - (IBAction)didPressedFileCreate:sender

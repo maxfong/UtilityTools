@@ -10,7 +10,8 @@
 
 @interface MAXProtocolEngine : NSObject
 
-+ (NSString *)postRequestWithURL:(NSURL *)url JSONString:(NSString *)JSONString error:(NSError **)error;
++ (void)postRequestWithURL:(NSURL *)url JSONString:(NSString *)JSONString completionHandler:(void (^)(NSString *, NSError*)) handler;
+
 + (BOOL)validityJSONString:(NSString *)JSONString error:(NSError **)error;
 
 @end
