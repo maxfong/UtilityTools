@@ -12,6 +12,11 @@
 
 + (NSDictionary *)dictionaryWithJSONString:(NSString *)jsonString error:(NSError **)error
 {
+    BOOL hasIntValue = [self validityIntValueWithJSONString:jsonString error:error];
+    if (hasIntValue)
+    {
+        return nil;
+    }
     NSString *replaceString = [self compressJSONString:jsonString];
     NSData *JSONData = [replaceString dataUsingEncoding:NSUnicodeStringEncoding];
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:JSONData
@@ -32,6 +37,11 @@
 
 + (BOOL)validityJSONString:(NSString *)jsonString error:(NSError **)error
 {
+    BOOL hasIntValue = [self validityIntValueWithJSONString:jsonString error:error];
+    if (hasIntValue)
+    {
+        return NO;
+    }
     NSDictionary *dictionary = [self dictionaryWithJSONString:jsonString error:error];
     return (dictionary ? YES : NO);
 }
@@ -42,9 +52,15 @@
     NSRange regexRange = [jsonString rangeOfString:regex options:NSRegularExpressionSearch];
     if (regexRange.location != NSNotFound)
     {
-        return NO;
+        NSString *description = [NSString stringWithFormat:@"No value for key in object around character %lu.", (unsigned long)regexRange.location];
+        if (error)
+        {
+            *error = [NSError errorWithDomain:@"" code:0 userInfo:@{@"NSDebugDescription": description}];
+        }
+        
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 + (NSString *)JSONDescriptionWithError:(NSError *)error
