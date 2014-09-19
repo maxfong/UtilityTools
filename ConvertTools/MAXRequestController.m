@@ -32,7 +32,7 @@
          }
          else
          {
-             [txtvResponseOutput setString:[error description]];
+             [txtvResponseOutput setString: error ? [error description] : @"未知错误"];
          }
     }];
 }
